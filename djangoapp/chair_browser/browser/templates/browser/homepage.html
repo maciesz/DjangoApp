@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Homepage</title>
+		<!-- Bootstrap -->
+		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div style="font-size: 300%; font-weight: bold;" class="page-header">
+			<center>Homepage</center>
+		</div>
+		<div class="container">
+			<div class="col-md-8 col-md-offset-2">
+				<div style="height: 430px; position: absolute; margin-top: 3%;" class="jumbotron">
+					<center>
+						<h2 style="font-weight: bold;"><i>Welcome {{ user.username }}!</i></h2>
+						<p style="margin-top: 7%;">
+							With great pleasure we can introduce You our new product. 
+							<br />
+							For sure it will simplify booking proces and will meet Your expectations.
+						</p>
+						<p class="lead" style="font-weight: bold; margin-top:6%; margin-bottom: 8%">Book your dreamed conference room with us!</p>
+						<div class="row">
+							<div class="col-md-4">
+								<form action="{% url 'browser:rooms' %}">
+								{% csrf_token %}
+								<input type="submit" class="btn btn-success" value="Available rooms" style="width: 90%;">
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="{% url 'browser:terms' %}" method="post">
+								{% csrf_token %}
+								<input type="submit" name="all_ids" class="btn btn-warning" value="Free terms" style="width: 90%;">
+								</form>
+							</div>
+							<div class="col-md-4">
+								<form action="{% url 'browser:logout' %}">
+								{% csrf_token %}
+								<input type="submit" class="btn btn-danger" value="Logout" style="width: 90%;">
+								</form>
+							</div>
+						</div>
+					</center>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

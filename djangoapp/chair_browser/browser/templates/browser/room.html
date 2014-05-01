@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+{% load render_table from django_tables2 %}
+<html>
+	<head>
+		<title>Rooms</title>
+		<link rel="stylesheet" type="text/css" href="{% static "style.css" %}" />
+		<link rel="stylesheet" href="{% static "django_tables2/themes/paleblue/css/screen.css" %}" /> 
+	</head>
+
+	<body>
+		<h1>Rooms</h1>
+			<br />
+			<p>Match rooms specification with self-typed phrase</p>
+			<form method="get" action="{% url 'browser:rooms' %}">
+				{% csrf_token %}
+				<p><label for="id_query">Search:</label>
+				<input type="text" name="query" id="id_query" />
+				<input type="submit" value="Query database" /></p>
+			</form>
+			<br />
+			<p>Available rooms</p>
+			<form action="{% url 'browser:terms' %}" method="post">
+				{% csrf_token %}
+				{% render_table rooms %}
+				<br />
+				<br />
+				<p> Tick rows and click the button to see available terms</p>
+				<input type="submit"/>
+			</form>
+	</body>
+</html>
+

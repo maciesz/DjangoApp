@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Chair browser</title>
+		<!-- Bootstrap-->
+		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-8 col-md-offset-2">
+				<div style="height: 300px; position: absolute; margin-top: 15%;" class="jumbotron">
+					<center>
+						<h1 style="font-size: 35px; font-weight: bold;">Welcome to chair reservation browser!</h1>
+						<br />
+						<div class="col-md-6">
+							<p style="font-size: 15px;">If You do not have account yet, please register by clicking the following button</p>
+							<form action="{% url 'browser:register' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<input type="submit" class="btn btn-info" value="Register" style="width: 50%;">
+							</form>
+						</div>
+						<div class="col-md-6">
+							<p style="font-size: 15px;">Skip registration process and login directly to the system</p>
+							<form action="{% url 'browser:rooms' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<input type="submit" class="btn btn-default" value="Login" style="width: 50%;">
+							</form>
+						</div>
+						<br />
+					</center>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

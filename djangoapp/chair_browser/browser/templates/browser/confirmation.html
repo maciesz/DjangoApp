@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Confirmation</title>
+		<!-- Bootstrap -->
+		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+	<head>
+	<body>
+		{% if redirect_homepage or not reservations %}
+		<p>Redirecting to homepage... </p>
+		<h3>Invalid request</h3>
+		<p>	1. You might have not chosen any of suggested terms. <br/>
+			2. There might have not been free terms for given rooms. <br />
+			3. Finally, perhaps somebody has booked the term before You. <br/>
+			<br />
+			<strong>Try again</strong>
+
+			<script>
+		    	function redirect() {
+		       		window.location.href = "{% url 'browser:homepage' %}";
+	      		}
+
+				setTimeout(redirect, 7000);
+			</script>
+		</p>
+		{% else %}
+		<div class="container">
+			<div class="col-md-6 col-md-offset-3">
+				<center>
+				<div class="jumbotron" style="height: 550px; margin-top: 8%;">
+					<center>
+						<h1>Confirmation</h1>
+						<div class="col-md-6 col-md-offset-3" style="margin-bottom: 3%;">
+							<h3>Reservation data</h3>
+							<ul class="list-group" style="margin-top: 8%;">
+								{% for reservation in reservations %}
+								<li class="list-group-item"><strong>Room:</strong> {{ reservation.room.name }}</li>
+								<li class="list-group-item"><strong>Description:</strong> {{ reservation.room.description }}</li>
+								<li class="list-group-item"><strong>Date:</strong> {{ reservation.booking_date }}</li>
+								<li class="list-group-item"><strong>From:</strong> {{ from }}</li>									
+								<li class="list-group-item"><strong>To:</strong> {{ to }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="row">
+								<div class="col-md-4 col-md-offset-1">
+									<form action="{% url 'browser:commit' %}" method="post">
+										{% csrf_token %}
+										<input type="submit" value="Confirm" class="btn btn-success" style="width: 125%;"/>
+									</form>
+								</div>
+								<div class="col-md-4 col-md-offset-1">									
+									<form action="{% url 'browser:homepage' %}">
+										{%	 csrf_token %}
+										<input type="submit" value="Start from scratch" class="btn btn-danger" style="width: 125%;"/>
+									</form>
+								</div>
+							</div> 
+						</div>
+					</center>
+				</div>
+				</center>
+			</div>
+		</div>
+		{% endif %}
+	</body>
+<html>
