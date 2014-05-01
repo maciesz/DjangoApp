@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from browser.models import Room, Term, Reservation
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 from browser.models import Room, Term, Reservation, RoomTable, TermTable
 from django.db.models import Q
 from django.core import serializers
@@ -144,29 +144,24 @@ def rooms(request):
         room_list = Room.objects.filter(
             Q(name__icontains=query) | Q(description__icontains=query) | Q(capacity__icontains=query))
 
-
-    #paginator=Paginator(room_list, 10)
-    #roomt=RoomTable(room_list, order_by=request.GET.get('sort'))
-    '''
-    paginator=Paginator(room_list, 10)
-    page=request.GET.get('page')
-    try:
-        rooms=paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page
-        rooms=paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results
-        rooms=paginator.page(paginator.num_pages)
-    '''
     # Prepare RoomTable content to display
     rooms = RoomTable(room_list, order_by=request.GET.get('sort'))
 
     # Set pagination
-    rooms.paginate(page=request.GET.get('page', 1), per_page=3)
+    paginator = Paginator(rooms.rows, 3)
+
+    page = request.GET.get('page')
+    try:
+        pagRooms = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        pagRooms = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range, deliver last page of results
+        pagRooms = paginator.page(paginator.num_pages)
 
 
-    return render_to_response('browser/rooms.html', {'rooms': rooms}, RequestContext(request))
+    return render_to_response('browser/rooms.html', {'rooms': pagRooms}, RequestContext(request))
 
 
 @login_required
@@ -206,11 +201,19 @@ def terms(request):
             request.session['to'] = sel_to.isoformat()
 
     # Construct data to be displayed
-    terms = TermTable(term_list, order_by=request.GET.get('sort'))
-    terms.paginate(page=request.GET.get('page', 1), per_page=3)
+    terms = TermTable(term_list)
+    paginator = Paginator(terms.rows, 3)
+
+    page = request.GET.get('page')
+    try:
+        pagTerms = paginator.page(page)
+    except PageNotAnInteger:
+        pagTerms = paginator.page(1)
+    except EmptyPage:
+        pagTerms = paginator.page(paginator.num_pages)
     term_form = TermForm()
 
-    return render_to_response('browser/terms.html', {'terms': terms, 'term_form': term_form}, RequestContext(request))
+    return render_to_response('browser/terms.html', {'terms': pagTerms, 'term_form': term_form}, RequestContext(request))
 
 
 @login_required

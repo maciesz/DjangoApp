@@ -13,12 +13,14 @@
 		<script src="{{ STATIC_URL }}js/jquery-1.10.2.js" type="text/javascript"></script>
 		<script src="{{ STATIC_URL }}js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 		<script src="{{ STATIC_URL }}js/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
-		<!-- TimePicker -->
-		<link href="{{ STATIC_URL }}css/bootstrap-timepicker.min.css"/>
-		<script type="{{ STATIC_URL }}js/bootstrap-timepicker.min.js"></script>
-		<script type="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="{{ STATIC_URL }}js/bootstrap.js"></script>
-		<script type="{{ STATIC_URL }}js/bootstrap-timepicker.js"></script>
+        <script type="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <!-- TimePicker -->
+		<!--<link href="{{ STATIC_URL }}css/bootstrap-timepicker.min.css"/>
+		<script src="{{ STATIC_URL }}js/bootstrap-timepicker.min.js"></script> -->
+            <link href="{{ STATIC_URL }}css/jquery.timepicker.css" type="text/css" rel="stylesheet">
+            <script src="{{ STATIC_URL }}js/jquery.timepicker.js"></script>
+		<!--<script src="{{ STATIC_URL }}js/bootstrap-timepicker.js"></script>-->
 		<!-- Brakuje bootstrap-2.2.2.min.js" -->
 		<script>
 			$(document).ready(function() {
@@ -29,12 +31,21 @@
 
 					$('#datepicker').datepicker({
 						minDate:'0',
-						maxDate:'+12m'
+						maxDate:'+2m',
+						showAnim: 'fadeIn'
 					});
 				});
 
 				$(function() {
 					$('#from_timepicker').timepicker({
+						//timeFormat: 'HH:mm p'
+						minTime:'0'
+					});
+				});
+
+				$(function() {
+					$('#to_timepicker').timepicker({
+					    //timeFormat: 'H:mm'
 						minTime:'0'
 					});
 				});
@@ -46,8 +57,8 @@
 				totalPages: 4
 			}
 			$('#table').bootstrapPaginator(options);*/
-			$('#timepicker').timepicker();
-			$('#to_timepicker').timepicker();
+			//$('#timepicker').timepicker();
+			//$('#to_timepicker').timepicker();
 		</script>
 	</head>
 	<body>
@@ -91,11 +102,13 @@
 										<input type="text" class="form-control" name="{{ field.name }}" id="datepicker" placeholder="Enter date" style="width: 200%;" readonly>
 										{% elif field.name == "from_hour" %}
 										<div class="input-append bootstrap-timepicker-component">
-										<input type="text" class="form-control" name="{{ field.name }}" id="timepicker" placeholder="From" style="width: 200%;"/>
+										<input type="text" class="form-control" name="{{ field.name }}" id="from_timepicker" placeholder="From" style="width: 200%;"/>
 										<span class="add-on"><i class="icon-time"></i></span>
 										</div>
 										{% elif field.name == "to" %}
+                                        <div class="input-append bootstrap-timepicker-component">
 										<input type="text" class="form-control" name="{{ field.name }}" id="to_timepicker" placeholder="To" style="width: 200%;">
+                                        <span class="add-on"><i class="icon-time"></i></span>
 										{% endif %}
 									</div>
 								</div>
@@ -111,7 +124,7 @@
 					</div>
 					<div class="col-md-6">
 						<center>
-						{% if terms.rows %}
+						{% if terms %}
 						<!--<label style="font-size: 300%; font-weight: normal; margin-bottom: 4%; text-decoration: underline; margin-top: 6%">
 							Results...
 						</label> -->
@@ -126,14 +139,29 @@
 								<th>Room</th>
 								<th>Selected</th>
 							</tr>
-							{% for row in terms.rows %}
+							{% for term in terms %}
 								<tr>
-								{% for value in row %}
+								{% for value in term %}
 									<td>{{ value }}</td>
 								{% endfor %}
 								</tr>
 							{% endfor %}
 							</table>
+                            <div class="pagination">
+                                <span class="step-links">
+                                    {% if terms.has_previous %}
+                                        <a href="?page={{ terms.previous_page_number }}">prevoius</a>
+                                    {% endif %}
+
+                                    <span class="current">
+                                        Page {{ terms.number }} of {{ terms.paginator.num_pages }}.
+                                    </span>
+
+                                    {% if terms.has_next %}
+                                        <a href="?page={{ terms.next_page_number }}">next</a>
+                                    {% endif %}
+                                </span>
+                            </div>
 							<center>
 								<input type="submit" value="Book" class="btn btn-success" style="width: 60%;">
 							</center>
@@ -147,14 +175,5 @@
 				</div>
 			</fieldset>
 		</div>
-		<!--
-		<form method="post" action="{% url 'browser:confirmation' %}">
-			{% csrf_token %}
-			{% render_table terms %}
-			<br />
-			<p>Make reservation.</p>
-			<input type="submit" value="Book room" />
-		</form>
-		<br />-->
 	</body>
 </html>

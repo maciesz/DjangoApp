@@ -42,9 +42,9 @@
 				</div>
 			</fieldset>
 
-            {% if rooms.rows %}
+            {% if rooms %}
 			<fieldset class="form-group" style="margin-top: 4%;">
-				<div class="col-md-8 col-md-offset-2">
+				<center class="col-md-8 col-md-offset-2">
 					<form action="{% url 'browser:terms' %}" method="post">
 						{% csrf_token %}
 						<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
@@ -54,19 +54,34 @@
 								<th>Description</th>
 								<th>Selected</th>
 							</tr>
-							{% for row in rooms.rows %}
+							{% for room in rooms %}
 								<tr>
-								{% for value in row %}
+								{% for value in room %}
 									<td>{{ value }}</td>
 								{% endfor %}
 								</tr>
 							{% endfor %}
 						</table>
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if rooms.has_previous %}
+                                    <a href="?page={{ rooms.previous_page_number }}">previous</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ rooms.number }} of {{ rooms.paginator.num_pages }}.
+                                </span>
+
+                                {% if rooms.has_next %}
+                                    <a href="?page={{ rooms.next_page_number }}">next</a>
+                                {% endif %}
+                            </span>
+                        </div>
 						<center>
 							<input type="submit" value="Submit" class="btn btn-success" style="width: 60%;"id="submit_room">
 						</center> 
 				</form>
-				</div>
+				</center>
 			</fieldset>
 			{% else %}
 			<div class="col-md-4 col-md-offset-5" style="margin-top: 7%;">

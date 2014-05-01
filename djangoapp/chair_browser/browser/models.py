@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Q
 from browser.exceptions import TimeIntervalException, ScheduleException, ArchaicDateTimeException
@@ -33,23 +34,33 @@ class Term(models.Model):
 	from_hour=models.TimeField('from')
 	to=models.TimeField()
 	room=models.ForeignKey(Room)
-	
+
+
+	def full_clean(self, *args, **kwargs):
+		return self.clean(*args, **kwargs)
+
 	def save(self, *args, **kwargs):
+		self.full_clean()
+		super(Term, self).save(self, *args, **kwargs)
+
+	def clean(self, *args, **kwargs):
+		# Validate booking date
 		if self.booking_date < date.today():
-			raise ArchaicDateTimeException()
+			raise ValidationError("Tried to save term from the past")
 		if self.booking_date == date.today():
 			if self.from_hour.hour < timezone.now().hour:
-				raise ArchaicDateTimeException()
+				raise ValidationError("Tried to save term from the past")
 			if self.from_hour.minute < timezone.now().minute:
-				raise ArchaicDateTimeException()
+				raise ValidationError("Tried to save term from the past")
+
 		# Check time interval format
 		if self.from_hour >= self.to:
-			raise TimeIntervalException()
-		
+			raise ValidationError("Taking up time must be less than freeing time")
+
 		# If call has been made in case of time interval distribution
-		if kwargs.pop('parameter', None):
-			super(Term, self).save(self, *args, **kwargs)
-		
+		#if kwargs.pop('parameter', None):
+			#super(Term, self).save(self, *args, **kwargs)
+
 		# Check whether exists term collision for particular room
 		try:
 			term = Term.objects.get(
@@ -59,14 +70,13 @@ class Term(models.Model):
 						~Q(to__lte=self.from_hour),
 					)
 		except Term.MultipleObjectsReturned:
-			raise ScheduleException()
+			raise ValidationError("Term collides with room-renting schedule")
 		except Term.DoesNotExist:
-			super(Term, self).save(self, *args, **kwargs)
+			pass
 		else:
 			if term:
-				raise ScheduleException()
-			else:
-				super(Term, self).save(self, *args, **kwargs)
+				raise ValidationError("Term collides with room-renting schedule")
+
 		
 	def __unicode__(self):
 		return "Date: " + str(self.booking_date) + " From: " + str(self.from_hour) + " To: " + str(self.to)
