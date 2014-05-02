@@ -8,12 +8,25 @@ from datetime import datetime, date
 from django.utils import timezone
 
 
+class Attribute(models.Model):
+	"""Attribute that can be involved in Room object"""
+	attribute=models.CharField(max_length=30)
+
+	def __unicode__(self):
+		return self.attribute
+
 class Room(models.Model):
 	"""Room model that contains name, capacity and optional descripiton"""
 	name=models.CharField(max_length=25)
 	capacity=models.IntegerField(default=20)
 	description=models.CharField(max_length=120, blank=True)
-	
+	attributes=models.ManyToManyField(Attribute)
+
+	def get_attributes(self):
+		separator = ", "
+		return separator.join([item.attribute for item in self.attributes.all()])
+	get_attributes.short_description = "Set of attributes"
+
 	def __unicode__(self):
 		return self.name
 

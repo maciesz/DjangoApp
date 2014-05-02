@@ -32,6 +32,7 @@ INSTALLED_APPS = (
 	'browser',
 	'django_tables2',
 	'pagination',
+	'south',
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
