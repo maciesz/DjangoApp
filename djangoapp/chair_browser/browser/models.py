@@ -71,8 +71,8 @@ class Term(models.Model):
 			raise ValidationError("Taking up time must be less than freeing time")
 
 		# If call has been made in case of time interval distribution
-		#if kwargs.pop('parameter', None):
-			#super(Term, self).save(self, *args, **kwargs)
+		if kwargs.pop('parameter', None):
+		    return
 
 		# Check whether exists term collision for particular room
 		try:

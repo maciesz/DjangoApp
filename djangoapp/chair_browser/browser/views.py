@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from browser.models import Room, Term, Reservation
+from browser.models import Room, Term, Reservation, Attribute
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 from browser.models import Room, Term, Reservation, RoomTable, TermTable
 from django.db.models import Q
@@ -16,6 +16,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 import datetime
 import time
+
 
 
 
@@ -136,32 +137,60 @@ def rooms(request):
         del request.session['ids']
 
     # By default set full room_list
-    room_list = Room.objects.all()
+    page = request.GET.get('page')
+    #room_list = Room.objects.all()
+
+    if not 'minCap' in request.session:
+        request.session['minCap'] = 10
+        request.session['maxCap'] = 30
 
     if request.method == 'GET':
         # Validate msg from search-box
         query = request.GET.get('query', '')
-        room_list = Room.objects.filter(
-            Q(name__icontains=query) | Q(description__icontains=query) | Q(capacity__icontains=query))
+        capRange = request.GET.get('capacity', '10-10')
+        minCap, maxCap = capRange.split('-')
+
+        if minCap == maxCap:
+            minCap = request.session['minCap']
+            maxCap = request.session['maxCap']
+        else:
+            request.session['minCap'] = minCap
+            request.session['maxCap'] = maxCap
+
+        room_list = Room.objects.all();
+        attribs = Attribute.objects.all()
+        for attr in attribs:
+            parameter = str(attr)
+            if request.GET.get(parameter):
+                att = attribs.filter(attribute=parameter)
+                room_list = room_list.filter(attributes__contains=att)
+
+        room_list = room_list.filter(
+            (Q(capacity__gte=minCap) & Q(capacity__lte=maxCap)) &
+            (
+                Q(capacity__icontains=query) |
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
+        )
 
     # Prepare RoomTable content to display
     rooms = RoomTable(room_list, order_by=request.GET.get('sort'))
 
     # Set pagination
-    paginator = Paginator(rooms.rows, 3)
-
-    page = request.GET.get('page')
+    paginator = Paginator(rooms.rows, 6)
     try:
-        pagRooms = paginator.page(page)
+        paginated_rooms = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
-        pagRooms = paginator.page(1)
+        paginated_rooms = paginator.page(1)
     except EmptyPage:
         # If page is out of range, deliver last page of results
-        pagRooms = paginator.page(paginator.num_pages)
+        paginated_rooms = paginator.page(paginator.num_pages)
 
-
-    return render_to_response('browser/rooms.html', {'rooms': pagRooms}, RequestContext(request))
+    attribute_list = Attribute.objects.all()
+    return render_to_response(
+        'browser/rooms.html', {'rooms': paginated_rooms, 'attribute_list': attribute_list}, RequestContext(request))
 
 
 @login_required
@@ -180,7 +209,6 @@ def terms(request):
         term_list = Term.objects.filter(room_id__id__in=ids)
 
     if request.method == 'GET':
-
         ids = request.session['ids']
         term_list = Term.objects.filter(Q(room_id__id__in=ids))
         form = TermForm(data=request.GET)

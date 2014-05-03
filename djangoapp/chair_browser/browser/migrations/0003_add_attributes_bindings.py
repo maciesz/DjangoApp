@@ -6,7 +6,7 @@ from django.db import models
 
 class Migration(DataMigration):
 	def forwards(self, orm):
-		white_board = orm['browser.Attribute'](attribute='Biała tablica')
+		white_board = orm['browser.Attribute'](attribute='Biala tablica')
 		green_board = orm['browser.Attribute'](attribute='Zielona tablica')
 		projector = orm['browser.Attribute'](attribute='Projektor')
 
