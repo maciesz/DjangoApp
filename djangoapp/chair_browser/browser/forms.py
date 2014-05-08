@@ -20,10 +20,18 @@ class UserProfileForm(forms.ModelForm):
 		model=UserProfile
 		fields=('photo',)
 
+
 class TermForm(forms.Form):
 	date=forms.DateField(widget=extras.SelectDateWidget())
 	from_hour=forms.TimeField(widget=AdminTimeWidget(format='%H:%M'))
 	to=forms.TimeField(widget=AdminTimeWidget(format='%H:%M'))
 	#from_hour=forms.TimeField(widget=SelectTimeWidget(), label="From")
 	#to=forms.TimeField(widget=SelectTimeWidget())
+
+
+class ContactForm(forms.Form):
+    emial=forms.EmailField(label='Your Email')
+    subject=forms.CharField()
+    message=forms.CharField(widget=forms.Textarea)
+
 

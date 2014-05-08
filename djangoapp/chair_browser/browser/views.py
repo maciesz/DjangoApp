@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from browser.forms import UserForm, UserProfileForm, TermForm
+from browser.forms import UserForm, UserProfileForm, TermForm, ContactForm
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
@@ -202,8 +202,12 @@ def terms(request):
         # assume that all rooms are in his area of interests
         if 'all_ids' in request.POST:
             request.session['ids'] = list(Room.objects.values_list('id', flat=True))
-        elif 'ids' not in request.session:
+        if 'ids' not in request.session:
             request.session['ids'] = request.POST.getlist('selection', None)
+            #name = request.POST.get('name', None)
+            #if name:
+             #   request.session['ids'] = Room.objects.filter(name__=name).values('pk')[0]
+
 
         ids = request.session['ids']
         term_list = Term.objects.filter(room_id__id__in=ids)
@@ -348,3 +352,5 @@ def commit(request):
                               RequestContext(request))
 
 
+def contact_form(request):
+    return render_to_response('browser/rooms.html', {'form': ContactForm()}, RequestContext(request))

@@ -21,6 +21,14 @@ TEMPLATE_DEBUG = True
 ATOMIC_REQUESTS = True
 ALLOWED_HOSTS = ['*']
 
+DAJAXICE_MEDIA_PREFIX="dajaxice"
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
+)
+
 # Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -29,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dajax',
+    'dajaxice',
 	'browser',
 	'django_tables2',
 	'pagination',
@@ -42,6 +52,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'pagination.middleware.PaginationMiddleware',
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'dajaxice.finders.DajaxiceFinder',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -76,5 +92,5 @@ LOGIN_URL = '/browser/login/'
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = '/static/'
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'

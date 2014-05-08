@@ -3,24 +3,33 @@
 {% load render_table from django_tables2 %}
 {% load querystring from django_tables2 %}
 {% load trans blocktrans from i18n %}
-
+{% load dajaxice_templatetags %}
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Rooms</title>
+
+        <!-- Include JQuery -->
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="{{ STATIC_URL }}js/jquery.ba-serializeobject.js" type="text/javascript"></script>
+
 		<!-- Bootstrap -->
 		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
 		<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
-
 		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
         <!-- DjangoTables2 -->
         <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+
         <!-- jQuery UI Slider - Horizontal range slider -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+        <!-- Import Dajaxice -->
+        {% dajaxice_js_import %}
         <script>
             $(function() {
                 $("#slider-range").slider({
@@ -46,12 +55,53 @@
                     }
                 );
             });
+
+            function message_callback(data) {
+                if (data.status == 'Success!') {
+                    $('#contact_errors').html(data.status);
+                } else {
+                    for (message in data.status) {
+                        $('#contact_errors').append("<p><b>" + message + ":</b>" + data.status["message"] + "</p>");
+                    }
+                }
+            }
+
+            $.fn.serializeObject = function()
+{
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+
+            function send_message() {
+                data = $('#contact_form').serializeObject();
+                Dajaxice.browser.send_message(message_callback, {'form': data});
+                return false;
+            }
         </script>
 	</head>
 	<body>
 		<div style="font-size: 300%; font-weight: bold;" class="page-header">
 			<center><i>Rooms</i></center>
 		</div>
+        <div id="contact_errors"></div>
+        <form action="" method="post" id="contact_form" accept-charset="utf-8">
+            {% csrf_token %}
+            <table>
+                {{ form }}
+            </table>
+            <p><input value="Send Message" id="send_msg" onclick="send_message();" type="button" </p>
+        </form>
 		<div class="container" style="margin-top: 4%">
 			<fieldset class="form-group">
 				<!--<div class="col-md-6 col-md-offset-1">
@@ -94,14 +144,31 @@
                                     </tr>
                                     {% endfor %}
                                 </table>-->
-
-                                <ul id="attr_list">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#attributes">
+                                                    Show list of attributes:
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="attributes" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {% for item in attribute_list %}
+                                                <input type="checkbox" name="{{ item }}" value="True"/>   {{ item }}<br />
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<ul id="attr_list">
                                     <strong>Attributes:</strong>
                                     <br />
                                     {% for item in attribute_list %}
                                         <input type="checkbox" name="{{ item }}" value="True"/>   {{ item }}<br />
                                     {% endfor %}
-                                </ul>
+                                </ul>-->
                             </div>
                         </div>
                     </form>
