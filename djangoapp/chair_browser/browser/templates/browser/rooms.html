@@ -3,7 +3,7 @@
 {% load render_table from django_tables2 %}
 {% load querystring from django_tables2 %}
 {% load trans blocktrans from i18n %}
-{% load dajaxice_templatetags %}
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -11,97 +11,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Rooms</title>
 
-        <!-- Include JQuery -->
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="{{ STATIC_URL }}js/jquery.ba-serializeobject.js" type="text/javascript"></script>
-
 		<!-- Bootstrap -->
 		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-		<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
         <!-- DjangoTables2 -->
         <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
 
         <!-- jQuery UI Slider - Horizontal range slider -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-
-        <!-- Import Dajaxice -->
-        {% dajaxice_js_import %}
-        <script>
-            $(function() {
-                $("#slider-range").slider({
-                    orientation: "horizontal",
-                    range: true,
-                    min: 5,
-                    max: 60,
-                    values: [16, 46],
-                    slide: function(event, ui) {
-                        $("#capacity-range").val(ui.values[0] + "-" + ui.values[1]);
-                    }
-                });
-
-                $("#capacity-range").val(
-                    $("#slider-range").slider("values", 0) +
-                    "-" +
-                    $("#slider-range").slider("values", 1)
-                );
-
-                $("#attr_list").click(
-                    function(e) {
-                        $(this).find('ul').toggle()
-                    }
-                );
-            });
-
-            function message_callback(data) {
-                if (data.status == 'Success!') {
-                    $('#contact_errors').html(data.status);
-                } else {
-                    for (message in data.status) {
-                        $('#contact_errors').append("<p><b>" + message + ":</b>" + data.status["message"] + "</p>");
-                    }
-                }
-            }
-
-            $.fn.serializeObject = function()
-{
-   var o = {};
-   var a = this.serializeArray();
-   $.each(a, function() {
-       if (o[this.name]) {
-           if (!o[this.name].push) {
-               o[this.name] = [o[this.name]];
-           }
-           o[this.name].push(this.value || '');
-       } else {
-           o[this.name] = this.value || '';
-       }
-   });
-   return o;
-};
-
-            function send_message() {
-                data = $('#contact_form').serializeObject();
-                Dajaxice.browser.send_message(message_callback, {'form': data});
-                return false;
-            }
-        </script>
 	</head>
 	<body>
 		<div style="font-size: 300%; font-weight: bold;" class="page-header">
 			<center><i>Rooms</i></center>
 		</div>
-        <div id="contact_errors"></div>
-        <form action="" method="post" id="contact_form" accept-charset="utf-8">
-            {% csrf_token %}
-            <table>
-                {{ form }}
-            </table>
-            <p><input value="Send Message" id="send_msg" onclick="send_message();" type="button" </p>
-        </form>
 		<div class="container" style="margin-top: 4%">
 			<fieldset class="form-group">
 				<!--<div class="col-md-6 col-md-offset-1">
@@ -110,6 +33,8 @@
 				<div class="col-md-5">
                     <label style="font-size: 140%; font-weight: normal; margin-bottom: 4%; text-decoration: underline;">Get all available rooms that include given phrase:</label>
 					<form method="get" action="{% url 'browser:rooms' %}">
+                    <!--<form action="" method="post" id="cokolwiek" accept-charset="utf-8">
+                        {% csrf_token %} -->
                         <div class="row">
                             <div class="col-md-1">
                                 <span class="glyphicon glyphicon-search" style="font-size: 200%;"></span>
@@ -183,12 +108,18 @@
 								<th><a href="?sort=capacity">Capacity</a></th>
 								<th>Description</th>
 								<th>Selected</th>
+                                <th></th>
 							</tr>
 							{% for room in rooms %}
 								<tr>
+                                {% with room|first as name %}
 								{% for value in room %}
 									<td>{{ value }}</td>
 								{% endfor %}
+                                    <td>
+                                        <input type="button" class="btn btn-success query_btn" id="{{ name }}" name="{{ name }}" value="{{ name }}">
+                                    </td>
+                                {% endwith %}
 								</tr>
 							{% endfor %}
 						</table>
@@ -208,7 +139,8 @@
                             </span>
                         </div>
 						<div>
-							<input type="submit" value="Submit" class="btn btn-success" style="width: 60%;"id="submit_room">
+							<input type="submit" value="Submit" class="btn btn-success" style="width: 60%;" id="submit_room">
+                            <button type="button" data-toggle="modal" data-target="#my_modal" class="btn btn-warning" style="width: 60%;">Launch modal</button>
 						</div>
 				    </form>
                     {% else %}
@@ -219,8 +151,110 @@
 				</center>
 			</fieldset>
 		</div>
+        <!-- Modal -->
+        <div class="modal fade" id="my_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
+                        <h4 class="modal-title">Przejrzyj terminy</h4>
+                    </div>
+                    <div class="modal-body" id="data_modal">
+                        <p>Miejsce na wszelkiego rodzaju dane&hellip;</p>
+                        <ul>
+                            <li>AAA</li>
+                        </ul>
+                    </div>
+                    <div class="modal-factor">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- AJAX -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include JQuery -->
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script src="{{ STATIC_URL }}js/jquery.ba-serializeobject.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+	    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                // Stąd przychodzą zapytania o poszczególne pokoje
+                $('.query_btn').click(function() {
+                    console.log("Cośtam klikam");
+                    console.log("Name: " + $(this).attr('name'));
+                    console.log("Wchodzę do '$.ajax'")
+                        var jqxhr = $.ajax("ajaxexample_json",
+                        {
+                            type: "GET",
+                            dataType: 'json',
+                            data: {'room_name': $(this).attr('name')},
+                            url: 'browser:ajax'
+                        })
+                        .done(function(data) {
+                            console.log('success');
+                            var counter = 0;
+                            var str = '<div class="panel-group" id="date_collapse">';
+                            $.each(data, function(key, value) {
+                                //console.log(data);
+                                counter++;
+                                console.log("Key: " + key + ", " + "Value: " + value);
+                                //str += '<input type="button" value=' + value + '>';
+                                str += '<div class="panel panel-default">';
+                                str += '<div class="panel-heading">';
+                                str += '<h4 class="panel-title">';
+                                str += '<a data-toggle="collapse" data-parent="date_collapse" href="#collapse';
+                                str += counter + '">';
+                                str += key;
+                                str += '</a></h4></div>';
+                                str += '<div id="collapse' + counter + '" class="panel-collapse collapse';
+                                str += (counter == 1) ? ' in">' : '">';
+                                str += '<div class="panel-body">';
+                                $.each(this, function(key, value) {
+                                    console.log("Key: " + key + ", value: " + value);
+                                    str += '<p>' + value[0] + '-' + value[1] + '</p>';
+                                })
+                                str += '</div></div>'
+                            })
+                            str += '</div></div>';
+                            $('#data_modal').html(str);
+                            $('#my_modal').modal('show');
+                        })
+                        .fail(function() {
+                            console.log('fail');
+                        })
+                        .always(function() {
+                            console.log('complete');
+                        })
+                });
+
+                // Ustawienia sliderów
+                $(function() {
+                    $("#slider-range").slider({
+                        orientation: "horizontal",
+                        range: true,
+                        min: 5,
+                        max: 60,
+                        values: [16, 46],
+                        slide: function(event, ui) {
+                            $("#capacity-range").val(ui.values[0] + "-" + ui.values[1]);
+                        }
+                    });
+
+                    $("#capacity-range").val(
+                        $("#slider-range").slider("values", 0) +
+                        "-" +
+                        $("#slider-range").slider("values", 1)
+                    );
+                });
+            });
+        </script>
 	</body>
-	<script src="js/bootstrap.min.js"></script>
 </html>
 
 

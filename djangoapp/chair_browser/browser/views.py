@@ -13,6 +13,7 @@ from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import IntegrityError, transaction
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from collections import defaultdict
 import json
 import datetime
 import time
@@ -354,3 +355,59 @@ def commit(request):
 
 def contact_form(request):
     return render_to_response('browser/rooms.html', {'form': ContactForm()}, RequestContext(request))
+
+
+def main(request):
+    return render_to_response('ajaxexample.html', context_instance=RequestContext(request))
+
+
+def ajax(request):
+    room_name = request.GET.get('room_name', '3440')
+    dates = Term.objects.filter(room__name=room_name).values_list('booking_date', flat = True).distinct()
+    to_json = []
+    dictionary = defaultdict(list)
+    for date in dates:
+        d = date.strftime("%Y-%m-%d")
+        time_list = \
+            Term.objects.filter(
+                Q(room__name=room_name) & Q(booking_date=date)
+            ).values_list('from_hour', 'to').order_by('from_hour', 'to')
+
+        #time_list.order_by('-from_hour')
+
+        first_elt = True
+        result_time_list = []
+        previous_from, previous_to = None, None
+        for time in time_list:
+            time_from = time[0]
+            time_to = time[1]
+            if first_elt:
+                previous_from = time_from
+                previous_to = time_to
+                lst = [previous_from, previous_to]
+                result_time_list.append(lst)
+            else:
+                curr_from = time_from
+                curr_to = time_to
+                if previous_to == curr_from:
+                    result_time_list[-1][-1] = curr_to
+                    previous_to = curr_to
+                else:
+                    previous_from = curr_from
+                    previous_to = curr_to
+                    lst = [curr_from, curr_to]
+                    result_time_list.append(lst)#curr_from, curr_to)
+
+        dict_list = []
+        for time in result_time_list:
+            time_from = time[0].strftime("%H:%M")
+            time_to = time[-1].strftime("%H:%M")
+            tup = (time_from, time_to)
+            dict_list.append(tup)
+        dictionary[d] = dict_list
+        to_json.append(d)
+    #data = serializers.serialize(format, dates)
+    response_data = json.dumps(dictionary)#[str(obj) for obj in to_json])
+    return HttpResponse(response_data, mimetype='application/json')
+
+    #return render(request, 'ajaxexample_json.html', {'aa': 'aa'})#json.dumps([str(obj) for obj in dates])) #, RequestContext(request)) #response_dict))
