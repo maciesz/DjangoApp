@@ -48,49 +48,6 @@ class Term(models.Model):
 	to=models.TimeField()
 	room=models.ForeignKey(Room)
 
-
-	def full_clean(self, *args, **kwargs):
-		return self.clean(*args, **kwargs)
-
-	def save(self, *args, **kwargs):
-		self.full_clean()
-		super(Term, self).save(self, *args, **kwargs)
-
-	def clean(self, *args, **kwargs):
-		# Validate booking date
-		if self.booking_date < date.today():
-			raise ValidationError("Tried to save term from the past")
-		if self.booking_date == date.today():
-			if self.from_hour.hour < timezone.now().hour:
-				raise ValidationError("Tried to save term from the past")
-			if self.from_hour.minute < timezone.now().minute:
-				raise ValidationError("Tried to save term from the past")
-
-		# Check time interval format
-		if self.from_hour >= self.to:
-			raise ValidationError("Taking up time must be less than freeing time")
-
-		# If call has been made in case of time interval distribution
-		if kwargs.pop('parameter', None):
-		    return
-
-		# Check whether exists term collision for particular room
-		try:
-			term = Term.objects.get(
-						Q(room__name=self.room.name),
-						Q(booking_date=self.booking_date),
-						~Q(from_hour__gte=self.to),
-						~Q(to__lte=self.from_hour),
-					)
-		except Term.MultipleObjectsReturned:
-			raise ValidationError("Term collides with room-renting schedule")
-		except Term.DoesNotExist:
-			pass
-		else:
-			if term:
-				raise ValidationError("Term collides with room-renting schedule")
-
-		
 	def __unicode__(self):
 		return "Date: " + str(self.booking_date) + " From: " + str(self.from_hour) + " To: " + str(self.to)
 

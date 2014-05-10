@@ -15,4 +15,5 @@ urlpatterns=patterns('',
 	url(r'^confirmation/$', views.confirmation, name='confirmation'),
 	url(r'^commit/$', views.commit, name='commit'),
     url(r'^rooms/ajaxexample_json/$', views.ajax, name='ajax'),
+    url(r'^rooms/rent/$', views.rent, name='rent'),
 )

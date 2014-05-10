@@ -12,14 +12,14 @@
 		<title>Rooms</title>
 
 		<!-- Bootstrap -->
-		<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-
+		<link  rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
         <!-- DjangoTables2 -->
         <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
-
         <!-- jQuery UI Slider - Horizontal range slider -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <!-- Timepicker -->
+        <link rel="stylesheet" href="{{ STATIC_URL }}js/jquery.ptTimeSelect.css" />
 	</head>
 	<body>
 		<div style="font-size: 300%; font-weight: bold;" class="page-header">
@@ -151,13 +151,13 @@
 				</center>
 			</fieldset>
 		</div>
-        <!-- Modal -->
+        <!-- Modal terminu-->
         <div class="modal fade" id="my_modal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
-                        <h4 class="modal-title">Przejrzyj terminy</h4>
+                        <h4 class="modal-title">Browse available terms</h4>
                     </div>
                     <div class="modal-body" id="data_modal">
                         <p>Miejsce na wszelkiego rodzaju dane&hellip;</p>
@@ -167,7 +167,45 @@
                     </div>
                     <div class="modal-factor">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="refresh_button">Refresh</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal konfirmacji terminu-->
+        <div class="modal fade" id="confirmation_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>-->
+                        <h4 class="modal-title">Confirm Your choice</h4>
+                    </div>
+                    <div class="modal-body" id="conf_data_modal" style="background-color: #f2efa4;">
+                        <!--<div class="col-md-6 col-md-offset-3">-->
+                            <!--<div class="jumbotron">-->
+                                <center>
+                                    <h1><strong>Confirmation</strong></h1>
+                                    <div style="margin-top: 6%;">
+                                        <h3>Reservation data</h3>
+                                        <ul class="list-group" style="margin-top: 6%; width: 60%;">
+                                            <li class="list-group-item" style="background-color: #ffe15b;"><strong id="conf_room"></strong></li>
+                                            <!--<li class="list-group-item"><strong id="conf_description">Description:</strong></li>-->
+                                            <li class="list-group-item" style="background-color: #ffeb57"><strong id="conf_date"></strong></li>
+                                            <li class="list-group-item" style="background-color: #fff261"><strong id="conf_from"></strong></li>
+                                            <li class="list-group-item" style="background-color: #fff869"><strong id="conf_to"></strong></li>
+                                        </ul>
+                                    </div>
+                                </center>
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="modal-factor" style="background-color: #f2efa4;">
+                        <center>
+                            <button type="button" class="btn btn-danger" id="reject_button" style="margin-left: 10%; width: 28%;">Reject</button>
+                            <button type="button" class="btn btn-primary" id="confirm_button" style="margin-right: 10%; width: 28%;">Confirm</button>
+                            <br><br><br><br>
+
+                        </center>
                     </div>
                 </div>
             </div>
@@ -182,48 +220,104 @@
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
 	    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <!--Timepicker-->
+        <script src="{{ STATIC_URL }}js/jquery.ptTimeSelect.js" type="text/javascript"></script>
         <script>
             $(document).ready(function() {
+                var room_name = "";
+                var date = "";
+                var from_hour = "";
+                var to_hour = "";
                 // Stąd przychodzą zapytania o poszczególne pokoje
                 $('.query_btn').click(function() {
+                    room_name = $(this).attr('name');
                     console.log("Cośtam klikam");
-                    console.log("Name: " + $(this).attr('name'));
-                    console.log("Wchodzę do '$.ajax'")
+                    console.log("Name: " + room_name);
+                    console.log("Wchodzę do '$.ajax'");
                         var jqxhr = $.ajax("ajaxexample_json",
                         {
                             type: "GET",
                             dataType: 'json',
-                            data: {'room_name': $(this).attr('name')},
-                            url: 'browser:ajax'
+                            data: {'room_name': room_name},
                         })
                         .done(function(data) {
                             console.log('success');
+
                             var counter = 0;
                             var str = '<div class="panel-group" id="date_collapse">';
                             $.each(data, function(key, value) {
                                 //console.log(data);
+                                date = key;
                                 counter++;
-                                console.log("Key: " + key + ", " + "Value: " + value);
+                                console.log("Key: " + date + ", " + "Value: " + value);
                                 //str += '<input type="button" value=' + value + '>';
+                                console.log("DATE: " + date);
                                 str += '<div class="panel panel-default">';
-                                str += '<div class="panel-heading">';
+                                str += '<div class="panel-heading">';// id="date" value="' + date + '">';
                                 str += '<h4 class="panel-title">';
                                 str += '<a data-toggle="collapse" data-parent="date_collapse" href="#collapse';
                                 str += counter + '">';
-                                str += key;
+                                str += '<strong>' + counter + '. </strong>' + date;
                                 str += '</a></h4></div>';
                                 str += '<div id="collapse' + counter + '" class="panel-collapse collapse';
                                 str += (counter == 1) ? ' in">' : '">';
                                 str += '<div class="panel-body">';
+                                str += '<div class="row">';
+                                str += '<div class="col-md-6">';
+                                str += 'Suggested hour intervals are: ';
+                                str += '<br><br>';
+                                str += '<ul>';
                                 $.each(this, function(key, value) {
                                     console.log("Key: " + key + ", value: " + value);
-                                    str += '<p>' + value[0] + '-' + value[1] + '</p>';
+                                    str += '<li>' + value[0] + '-' + value[1] + '</li>';
                                 })
-                                str += '</div></div>'
+                                str += '</ul>';
+                                str += '</div>';
+                                str += '<div class="col-md-6">';
+                                //str += '<form method="get" action="{% url 'browser:rent' %}">';
+                                str += 'Room: ' + '<input name="room" value="' + room_name + '" style="margin-right:16%;" readonly>';
+                                str += 'Date: ' + '<input name="date" class="date" value="' + date + '" style="margin-right:16%;" readonly>';
+                                str += '<br><br>';
+                                str += 'From: ' + '<input name="to_hour" class="timepicker from" style="width: 31%; margin-right:9%;" value="05:00 PM"/>';
+                                //str += '<br><br>';
+                                str += 'To: ' + '<input name="from_hour" class="timepicker to" style="width: 31%;" value="07:00 PM"/>';
+                                str += '<br/><br/>';
+                                str += '<center>';
+                                str += '<input type="submit" class="btn btn-success reserve" value="Reserve" style="width: 100%;"/>';
+                                str += '</center>';
+                                //str += '</form>';
+                                str += '</div>';
+                                str += '</div></div></div>';
                             })
+
                             str += '</div></div>';
                             $('#data_modal').html(str);
                             $('#my_modal').modal('show');
+                            $('.timepicker').ptTimeSelect({
+                                /*containerClass: "timeCntr",
+                                containerWidth: "350px",
+                                setButtonLabel: "Select",
+                                minutesLabel: "min",
+                                hoursLabel: "Hrs",*/
+                                zIndex: "10000", // ustawić na jakiś bardzo duży
+                            });
+
+                            $('.reserve').click(function() {
+                                closest_from_hour = $(this).parents().find('.from').val();
+                                closest_to_hour = $(this).parents().find('.to').val();
+                                closest_date = $(this).parents().find('.date').val();
+                                date = closest_date;
+                                from_hour = closest_from_hour;
+                                to_hour = closest_to_hour;
+                                console.log("Najbliszy od do: (" + closest_from_hour + ", " + closest_to_hour + "), date: " + closest_date);
+                                $('#conf_room').html('Room: ' + room_name);
+                                $('#conf_date').html('Date: ' + closest_date);
+                                $('#conf_from').html('From: ' + closest_from_hour);
+                                $('#conf_to').html('To: ' + closest_to_hour);
+
+                                $('#my_modal').modal('hide');
+                                $('#confirmation_modal').modal('show');
+                            });
                         })
                         .fail(function() {
                             console.log('fail');
@@ -233,6 +327,41 @@
                         })
                 });
 
+                $('#reject_button').click(function() {
+                    $('#confirmation_modal').modal('hide');
+                    $('#my_modal').modal('show');
+                });
+
+                $('#confirm_button').click(function() {
+                    console.log("dataaa: " + date);
+                    var jqxhr = $.ajax("rent",
+                    {
+                        type: "GET",
+                        dataType: 'json',
+                        data: {'room_name': room_name}, // + '&date=' + date + '&from_hour=' + from_hour + '&to_hour=' + to_hour
+                        /*{
+                            'room_name': room_name,
+                            'date': date,
+                            'from_hour': from_hour,
+                            'to_hour': to_hour,
+                        },*/
+                    })
+                    .done(function(data) {
+                        console.log("Konfirmacja sukces");
+                        console.log(data);
+                        if (data == False) {
+
+                        } else {
+
+                        }
+                    })
+                    .fail(function() {
+                        console.log("Konfirmacja nie doszła do skutku");
+                    })
+                    .always(function() {
+                        console.log("Proces konfirmacji zakończona");
+                    })
+                });
                 // Ustawienia sliderów
                 $(function() {
                     $("#slider-range").slider({

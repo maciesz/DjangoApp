@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from browser.forms import UserForm, UserProfileForm, TermForm, ContactForm
 from django.template import RequestContext
@@ -360,7 +361,7 @@ def contact_form(request):
 def main(request):
     return render_to_response('ajaxexample.html', context_instance=RequestContext(request))
 
-
+@login_required
 def ajax(request):
     room_name = request.GET.get('room_name', '3440')
     dates = Term.objects.filter(room__name=room_name).values_list('booking_date', flat = True).distinct()
@@ -411,3 +412,10 @@ def ajax(request):
     return HttpResponse(response_data, mimetype='application/json')
 
     #return render(request, 'ajaxexample_json.html', {'aa': 'aa'})#json.dumps([str(obj) for obj in dates])) #, RequestContext(request)) #response_dict))
+
+@login_required
+@transaction.atomic
+def rent(request):
+    completed = False
+    if request.GET:
+        return HttpResponse(json.dump('Jestem w GETie'), mimetype='application/json')
