@@ -237,6 +237,7 @@
                 $('#close_button').click(function(e) {
                     $('.alert').hide();
                 });
+                $.ajaxSetup({ cache: false });
                 $('#load_gif').ajaxStart(function() { $(this).show(); });
                 $('#load_gif').ajaxComplete(function() { $(this).hide(); });
                 // Stąd przychodzą zapytania o poszczególne pokoje
@@ -345,7 +346,9 @@
                     $('#conf-alert').show();
                     $('#my_modal').modal('show');
                 });
+
                 $('#confirm_button').click(function() {
+                        new_date = date.replace(/\-/g,'.');
                         var jqxhr = $.ajax("rent",
                         {
                             type: "GET",
@@ -353,9 +356,9 @@
                             data:
                             {
                                 'room_name': room_name,
-                                'date': date,
+                                'date': new_date,
                                 'from_hour': from_hour,
-                                'to_hour': to_hour
+                                'to_hour': to_hour,
                             },
                         })
                         .done(function(data) {

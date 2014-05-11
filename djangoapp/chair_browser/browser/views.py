@@ -420,57 +420,81 @@ def rent(request):
     completed = False
 
     if request.GET:
-        room_name = request.GET.get('room_name')
-        date = datetime.datetime.strptime(request.GET.get('date'), "%Y-%m-%d")
-        from_hour = request.GET.get('from_hour')
-        to_hour = request.GET.get('to_hour')
+        try:
+            try:
+                room_name = request.GET.get('room_name')
+                date = datetime.datetime.strptime(request.GET.get('date'), "%Y.%m.%d")
+                from_hour = datetime.datetime.strptime(request.GET.get('from_hour'), "%I:%M %p").time()
+                to_hour = datetime.datetime.strptime(request.GET.get('to_hour'), "%I:%M %p").time()
 
-        reservation = Term.objects.filter(
-            Q(room__name=room_name) &
-            Q(booking_date=date) &
-            Q(from_hour__lte=from_hour) &
-            Q(to__gte=to_hour)
-        )
+                try:
+                    reservations = Term.objects.filter(
+                        Q(room__name=room_name) &
+                        Q(booking_date=date) &
+                        Q(from_hour__lte=from_hour) &
+                        Q(to__gte=to_hour)
+                    )
+                    try:
+                        if not reservations:
+                            #dict = defaultdict(list)
+                            list = []
+                            #conv_date = date.strftime("%Y.%m.%d")
+                            #conv_from_time = from_hour.strftime("%I:%M %p")
+                            #conv_to_time = to_hour.strftime("%I:%M %p")
+                            #list = [room_name, conv_date, conv_from_time, conv_to_time,]
+                            #dict['values'] = list
+                            #dict['komunikat'] = 'Nie istnieje tak sparametryzowany obiekt w bazie'
+                            return HttpResponse(json.dumps('No room with such preferences is available'), mimetype='application/json')
 
-        if not reservation:
-            return HttpResponse(json.dumps(False), mimetype='application/json')
+                        reservation = reservations[0]
+                        room = Room.objects.filter(pk=reservation.room.id)[0]
+                        if room:
+                            if reservation.from_hour < from_hour:
+                                room.term_set.create(
+                                    booking_date=reservation.booking_date,
+                                    from_hour=reservation.from_hour,
+                                    to=from_hour
+                                )
 
-        room = Room.objects.get(pk=reservation.room.id)
+                            # Analogical situation to rhs of time interval
+                            if reservation.to > to_hour:
+                                room.term_set.create(
+                                    booking_date=reservation.booking_date,
+                                    from_hour=to_hour,
+                                    to=reservation.to
+                                )
 
-        if room:
-            # Delete reserved interval from area of interests
-            room.term_set.filter(id=reservation.pk).delete()
-            # Check whether date interval can be divided from left-side
-            if reservation.from_hour < from_hour:
-                # If so create appropriate row
-                room.term_set.create(
-                    booking_date=reservation.booking_date,
-                    from_hour=reservation.from_hour,
-                    to=from_hour
-                )
+                            # Register reservation
+                            Reservation.objects.create(
+                                user_profile=request.user,
+                                room=reservation.room,
+                                booking_date=reservation.booking_date,
+                                from_hour=from_hour,
+                                to=to_hour
+                            )
 
-            # Analogical situation to rhs of time interval
-            if reservation.to > to_hour:
-                room.term_set.create(
-                    booking_date=reservation.booking_date,
-                    from_hour=to_hour,
-                    to=reservation.to
-                )
+                            # Delete original term
+                            room.term_set.filter(id=reservation.id).delete()
 
-            # Register reservation
-            Reservation.objects.create(
-                user_profile=request.user,
-                room=reservation.room,
-                booking_date=reservation.booking_date,
-                from_hour=from_hour,
-                to=to_hour
-            )
+                            # Add eventual intervals
+                            room.save()
 
-            # Add eventual intervals
-            room.save()
+                            #Mark operation as completed
+                            completed = True
 
-            #Mark operation as completed
-            completed = True
-
-        data = json.dumps(completed)
-        return HttpResponse(data, mimetype='application/json')
+                        data = json.dumps(completed)
+                        return HttpResponse(data, mimetype='application/json')
+                    except:
+                        return HttpResponse(json.dumps('Error in reservation service'), mimetype='application/json')
+                except:
+                    return HttpResponse(json.dumps('No room with such preferences is available'), mimetype='application/json')
+            except:
+                #response = defaultdict(list)
+                #list = [room_name, date, from_hour, to_hour]
+                #response['dane'] = list
+                #response['komunikat'] = 'Blad podczas odczytywania danych GETem'
+                return HttpResponse(json.dumps('Invalid data format'), mimetype='application/json')
+        except:
+            return HttpResponse(json.dumps('Error in GET method'), mimetype='application/json')
+    else:
+        return HttpResponse(json.dumps('Any of GET/SET methods has been set'), mimetype='application/json')
