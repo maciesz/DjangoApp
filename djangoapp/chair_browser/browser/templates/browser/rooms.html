@@ -33,8 +33,6 @@
 				<div class="col-md-5">
                     <label style="font-size: 140%; font-weight: normal; margin-bottom: 4%; text-decoration: underline;">Get all available rooms that include given phrase:</label>
 					<form method="get" action="{% url 'browser:rooms' %}">
-                    <!--<form action="" method="post" id="cokolwiek" accept-charset="utf-8">
-                        {% csrf_token %} -->
                         <div class="row">
                             <div class="col-md-1">
                                 <span class="glyphicon glyphicon-search" style="font-size: 200%;"></span>
@@ -100,8 +98,7 @@
 				</div>
 				<center class="col-md-5 col-md-offset-1" style="margin-top: 2%;">
                     {% if rooms %}
-					<form action="{% url 'browser:terms' %}" method="post">
-						{% csrf_token %}
+
 						<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
 							<tr>
 								<th><a href="?sort=name">Name</a></th>
@@ -142,7 +139,7 @@
 							<input type="submit" value="Submit" class="btn btn-success" style="width: 60%;" id="submit_room">
                             <button type="button" data-toggle="modal" data-target="#my_modal" class="btn btn-warning" style="width: 60%;">Launch modal</button>
 						</div>
-				    </form>
+
                     {% else %}
                     <span class="glyphicon glyphicon-warning-sign" style="font-size: 1000%;"></span>
                     <br/>
@@ -160,14 +157,23 @@
                         <h4 class="modal-title">Browse available terms</h4>
                     </div>
                     <div class="modal-body" id="data_modal">
-                        <p>Miejsce na wszelkiego rodzaju dane&hellip;</p>
-                        <ul>
-                            <li>AAA</li>
-                        </ul>
+                        <center>
+                            <img id="load_gif" src="{{ STATIC_URL }}css/ajax-loader.gif" style="width: 30%; height: 30%;"/>
+                        </center>
                     </div>
                     <div class="modal-factor">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="refresh_button">Refresh</button>
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button" style="width: 28%; margin-left: 10%;">Close</button>
+                            <button type="button" class="btn btn-primary" id="refresh_button" style="width: 28%; margin-right:10%;">Refresh</button>
+
+                            <br><br>
+                            <div id="conf-alert" class="alert alert-warning" style="display:none; width: 80%;">
+                                Confirmation has been rejected&hellip;
+                            </div>
+                            <div id="transaction-alert" class="alert alert-danger" style="display: none; width: 80%;">
+                                Try of renting the room hasn't finished successfully&hellip;
+                            </div>
+                        </center>
                     </div>
                 </div>
             </div>
@@ -203,8 +209,8 @@
                         <center>
                             <button type="button" class="btn btn-danger" id="reject_button" style="margin-left: 10%; width: 28%;">Reject</button>
                             <button type="button" class="btn btn-primary" id="confirm_button" style="margin-right: 10%; width: 28%;">Confirm</button>
-                            <br><br><br><br>
-
+                            <br><br>
+                            <br><br>
                         </center>
                     </div>
                 </div>
@@ -228,12 +234,18 @@
                 var date = "";
                 var from_hour = "";
                 var to_hour = "";
+                $('#close_button').click(function(e) {
+                    $('.alert').hide();
+                });
+                $('#load_gif').ajaxStart(function() { $(this).show(); });
+                $('#load_gif').ajaxComplete(function() { $(this).hide(); });
                 // Stąd przychodzą zapytania o poszczególne pokoje
                 $('.query_btn').click(function() {
                     room_name = $(this).attr('name');
                     console.log("Cośtam klikam");
                     console.log("Name: " + room_name);
                     console.log("Wchodzę do '$.ajax'");
+                    $('#my_modal').modal('show');
                         var jqxhr = $.ajax("ajaxexample_json",
                         {
                             type: "GET",
@@ -274,12 +286,12 @@
                                 str += '</ul>';
                                 str += '</div>';
                                 str += '<div class="col-md-6">';
-                                //str += '<form method="get" action="{% url 'browser:rent' %}">';
+
                                 str += 'Room: ' + '<input name="room" value="' + room_name + '" style="margin-right:16%;" readonly>';
                                 str += 'Date: ' + '<input name="date" class="date" value="' + date + '" style="margin-right:16%;" readonly>';
                                 str += '<br><br>';
                                 str += 'From: ' + '<input name="to_hour" class="timepicker from" style="width: 31%; margin-right:9%;" value="05:00 PM"/>';
-                                //str += '<br><br>';
+
                                 str += 'To: ' + '<input name="from_hour" class="timepicker to" style="width: 31%;" value="07:00 PM"/>';
                                 str += '<br/><br/>';
                                 str += '<center>';
@@ -303,9 +315,9 @@
                             });
 
                             $('.reserve').click(function() {
-                                closest_from_hour = $(this).parents().find('.from').val();
-                                closest_to_hour = $(this).parents().find('.to').val();
-                                closest_date = $(this).parents().find('.date').val();
+                                closest_from_hour = $('.from', $(this).closest("div")).val();
+                                closest_to_hour = $('.to', $(this).closest("div")).val();
+                                closest_date = $('.date', $(this).closest("div")).val();
                                 date = closest_date;
                                 from_hour = closest_from_hour;
                                 to_hour = closest_to_hour;
@@ -329,22 +341,40 @@
 
                 $('#reject_button').click(function() {
                     $('#confirmation_modal').modal('hide');
+                    //$('.alert').hide();
+                    $('#conf-alert').show();
                     $('#my_modal').modal('show');
                 });
-
                 $('#confirm_button').click(function() {
+                        var jqxhr = $.ajax("rent",
+                        {
+                            type: "GET",
+                            dataType: 'json',
+                            data:
+                            {
+                                'room_name': room_name,
+                                'date': date,
+                                'from_hour': from_hour,
+                                'to_hour': to_hour
+                            },
+                        })
+                        .done(function(data) {
+                            console.log('success' + data);
+                        })
+                        .fail(function() {
+                            console.log('fail');
+                        })
+                        .always(function() {
+                        })
+                });
+/*                $('#confirm_button').click(function() {
                     console.log("dataaa: " + date);
-                    var jqxhr = $.ajax("rent",
+                    var jqxhr = $.ajax("rent_json",
                     {
                         type: "GET",
                         dataType: 'json',
-                        data: {'room_name': room_name}, // + '&date=' + date + '&from_hour=' + from_hour + '&to_hour=' + to_hour
-                        /*{
-                            'room_name': room_name,
-                            'date': date,
-                            'from_hour': from_hour,
-                            'to_hour': to_hour,
-                        },*/
+                        data: {'date': date},
+
                     })
                     .done(function(data) {
                         console.log("Konfirmacja sukces");
@@ -361,7 +391,7 @@
                     .always(function() {
                         console.log("Proces konfirmacji zakończona");
                     })
-                });
+                }); */
                 // Ustawienia sliderów
                 $(function() {
                     $("#slider-range").slider({

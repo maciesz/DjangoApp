@@ -363,53 +363,54 @@ def main(request):
 
 @login_required
 def ajax(request):
-    room_name = request.GET.get('room_name', '3440')
-    dates = Term.objects.filter(room__name=room_name).values_list('booking_date', flat = True).distinct()
-    to_json = []
-    dictionary = defaultdict(list)
-    for date in dates:
-        d = date.strftime("%Y-%m-%d")
-        time_list = \
-            Term.objects.filter(
-                Q(room__name=room_name) & Q(booking_date=date)
-            ).values_list('from_hour', 'to').order_by('from_hour', 'to')
+    if request.GET:
+        room_name = request.GET.get('room_name', '3440')
+        dates = Term.objects.filter(room__name=room_name).values_list('booking_date', flat = True).distinct()
+        to_json = []
+        dictionary = defaultdict(list)
+        for date in dates:
+            d = date.strftime("%Y-%m-%d")
+            time_list = \
+                Term.objects.filter(
+                    Q(room__name=room_name) & Q(booking_date=date)
+                ).values_list('from_hour', 'to').order_by('from_hour', 'to')
 
-        #time_list.order_by('-from_hour')
+            #time_list.order_by('-from_hour')
 
-        first_elt = True
-        result_time_list = []
-        previous_from, previous_to = None, None
-        for time in time_list:
-            time_from = time[0]
-            time_to = time[1]
-            if first_elt:
-                previous_from = time_from
-                previous_to = time_to
-                lst = [previous_from, previous_to]
-                result_time_list.append(lst)
-            else:
-                curr_from = time_from
-                curr_to = time_to
-                if previous_to == curr_from:
-                    result_time_list[-1][-1] = curr_to
-                    previous_to = curr_to
+            first_elt = True
+            result_time_list = []
+            previous_from, previous_to = None, None
+            for time in time_list:
+                time_from = time[0]
+                time_to = time[1]
+                if first_elt:
+                    previous_from = time_from
+                    previous_to = time_to
+                    lst = [previous_from, previous_to]
+                    result_time_list.append(lst)
                 else:
-                    previous_from = curr_from
-                    previous_to = curr_to
-                    lst = [curr_from, curr_to]
-                    result_time_list.append(lst)#curr_from, curr_to)
+                    curr_from = time_from
+                    curr_to = time_to
+                    if previous_to == curr_from:
+                        result_time_list[-1][-1] = curr_to
+                        previous_to = curr_to
+                    else:
+                        previous_from = curr_from
+                        previous_to = curr_to
+                        lst = [curr_from, curr_to]
+                        result_time_list.append(lst)#curr_from, curr_to)
 
-        dict_list = []
-        for time in result_time_list:
-            time_from = time[0].strftime("%H:%M")
-            time_to = time[-1].strftime("%H:%M")
-            tup = (time_from, time_to)
-            dict_list.append(tup)
-        dictionary[d] = dict_list
-        to_json.append(d)
-    #data = serializers.serialize(format, dates)
-    response_data = json.dumps(dictionary)#[str(obj) for obj in to_json])
-    return HttpResponse(response_data, mimetype='application/json')
+            dict_list = []
+            for time in result_time_list:
+                time_from = time[0].strftime("%H:%M")
+                time_to = time[-1].strftime("%H:%M")
+                tup = (time_from, time_to)
+                dict_list.append(tup)
+            dictionary[d] = dict_list
+            to_json.append(d)
+        #data = serializers.serialize(format, dates)
+        response_data = json.dumps(dictionary)#[str(obj) for obj in to_json])
+        return HttpResponse(response_data, mimetype='application/json')
 
     #return render(request, 'ajaxexample_json.html', {'aa': 'aa'})#json.dumps([str(obj) for obj in dates])) #, RequestContext(request)) #response_dict))
 
@@ -417,5 +418,59 @@ def ajax(request):
 @transaction.atomic
 def rent(request):
     completed = False
+
     if request.GET:
-        return HttpResponse(json.dump('Jestem w GETie'), mimetype='application/json')
+        room_name = request.GET.get('room_name')
+        date = datetime.datetime.strptime(request.GET.get('date'), "%Y-%m-%d")
+        from_hour = request.GET.get('from_hour')
+        to_hour = request.GET.get('to_hour')
+
+        reservation = Term.objects.filter(
+            Q(room__name=room_name) &
+            Q(booking_date=date) &
+            Q(from_hour__lte=from_hour) &
+            Q(to__gte=to_hour)
+        )
+
+        if not reservation:
+            return HttpResponse(json.dumps(False), mimetype='application/json')
+
+        room = Room.objects.get(pk=reservation.room.id)
+
+        if room:
+            # Delete reserved interval from area of interests
+            room.term_set.filter(id=reservation.pk).delete()
+            # Check whether date interval can be divided from left-side
+            if reservation.from_hour < from_hour:
+                # If so create appropriate row
+                room.term_set.create(
+                    booking_date=reservation.booking_date,
+                    from_hour=reservation.from_hour,
+                    to=from_hour
+                )
+
+            # Analogical situation to rhs of time interval
+            if reservation.to > to_hour:
+                room.term_set.create(
+                    booking_date=reservation.booking_date,
+                    from_hour=to_hour,
+                    to=reservation.to
+                )
+
+            # Register reservation
+            Reservation.objects.create(
+                user_profile=request.user,
+                room=reservation.room,
+                booking_date=reservation.booking_date,
+                from_hour=from_hour,
+                to=to_hour
+            )
+
+            # Add eventual intervals
+            room.save()
+
+            #Mark operation as completed
+            completed = True
+
+        data = json.dumps(completed)
+        return HttpResponse(data, mimetype='application/json')

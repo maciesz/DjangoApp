@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="Usunięcie wszystkich niepotrzebnych wstawkek z Dajax'a i Dajaxice'a w rooms.html. Dodanie AJAXa - komunikacja z bazą danych i wyświetlanie prostego modelu z dostępnymi datami oraz godzinami.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/templates/dajaxice/dajaxice.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/templates/dajaxice/dajaxice_function_loop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/templates/dajaxice/dajaxice_module_loop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/dajax/dojo.dajax.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/dajax/jquery.dajax.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/dajax/mootools.dajax.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/dajax/prototype.dajax.core.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/._.DS_Store" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/core/Dajaxice.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/core/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/tests/ajax.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/core.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/templatetags/dajaxice_templatetags.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/decorators.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/exceptions.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/finders.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajax/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rent.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/tests/requirements.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/tests/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/dajaxice/views.py" />
+    <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/chair_browser/settings.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/chair_browser/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -67,19 +36,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="rooms.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="rooms.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="335" column="51" selection-start="19002" selection-end="19002" vertical-scroll-proportion="-2.2407408" vertical-offset="5909" max-vertical-offset="7110">
+            <state line="317" column="93" selection-start="18094" selection-end="18094" vertical-scroll-proportion="0.4201389" vertical-offset="5585" max-vertical-offset="7650">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -98,7 +76,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="11" selection-start="734" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+            <state line="17" column="32" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -109,19 +87,18 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="419" column="18" selection-start="15410" selection-end="15410" vertical-scroll-proportion="0.0" vertical-offset="7367" max-vertical-offset="7686">
+            <state line="418" column="8" selection-start="15555" selection-end="15555" vertical-scroll-proportion="0.0" vertical-offset="7093" max-vertical-offset="8658">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajaxexample_json.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ajaxexample_json.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="0.08896211" vertical-offset="0" max-vertical-offset="607">
+            <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
               <folding />
             </state>
           </provider>
@@ -192,18 +169,19 @@
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/chair_browser/settings.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/terms.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rent.html" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/inny.html" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="29" />
-    <option name="width" value="1282" />
-    <option name="height" value="777" />
+    <option name="x" value="301" />
+    <option name="y" value="95" />
+    <option name="width" value="722" />
+    <option name="height" value="498" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -556,15 +534,19 @@
       <created>1399687892167</created>
       <updated>1399687892167</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Dodanie prawie działających modali.">
+      <created>1399766231728</created>
+      <updated>1399766231728</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="29" width="1282" height="777" extended-state="6" />
-    <editor active="false" />
+    <frame x="301" y="95" width="722" height="498" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09166667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21083455" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -620,7 +602,8 @@
     <MESSAGE value="Dodanie prostej przeglądarki spełniającej wymogi zadania. Można wyszukać np.: pokoje, które mają między 10-20 miejsc, płyn do zmywania naczyń AJAX zawierające w nazwie/opisie słowo 'kebab'" />
     <MESSAGE value="Dodanie collapse'a na atrybutach pokoi, wbudowanie prostego programiku wysyłającego wiadomość przy użyciu Dajaxice'a." />
     <MESSAGE value="Usunięcie wszystkich niepotrzebnych wstawkek z Dajax'a i Dajaxice'a w rooms.html. Dodanie AJAXa - komunikacja z bazą danych i wyświetlanie prostego modelu z dostępnymi datami oraz godzinami." />
-    <option name="LAST_COMMIT_MESSAGE" value="Usunięcie wszystkich niepotrzebnych wstawkek z Dajax'a i Dajaxice'a w rooms.html. Dodanie AJAXa - komunikacja z bazą danych i wyświetlanie prostego modelu z dostępnymi datami oraz godzinami." />
+    <MESSAGE value="Dodanie prawie działających modali." />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodanie prawie działających modali." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -628,16 +611,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="368" column="70" selection-start="13541" selection-end="13541" vertical-scroll-proportion="0.0" vertical-offset="6466" max-vertical-offset="6768">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="17" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="252">
@@ -665,12 +638,21 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -699,7 +681,6 @@
         <state line="300" column="70" selection-start="10848" selection-end="10848" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6498">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -731,12 +712,21 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -756,14 +746,15 @@
         <state line="178" column="0" selection-start="6422" selection-end="6422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6408">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="178" max-vertical-offset="1026" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="178" max-vertical-offset="1026">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py">
@@ -786,12 +777,21 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -824,12 +824,21 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -861,7 +870,6 @@
         <state line="163" column="70" selection-start="5951" selection-end="5951" vertical-scroll-proportion="0.0" vertical-offset="2749" max-vertical-offset="5904">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -883,7 +891,6 @@
         <state line="142" column="42" selection-start="5203" selection-end="5203" vertical-scroll-proportion="0.0" vertical-offset="1879" max-vertical-offset="4875">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -901,12 +908,21 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -943,7 +959,6 @@
         <state line="161" column="37" selection-start="5880" selection-end="5880" vertical-scroll-proportion="0.0" vertical-offset="2175" max-vertical-offset="4740">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -953,7 +968,6 @@
         <state line="222" column="12" selection-start="7242" selection-end="7242" vertical-scroll-proportion="0.0" vertical-offset="3109" max-vertical-offset="4665">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -985,7 +999,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2996633" vertical-offset="178" max-vertical-offset="1026" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2996633" vertical-offset="178" max-vertical-offset="1026">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/forms.py">
@@ -1017,15 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="734" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/ajax.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="47" column="28" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1242">
@@ -1054,28 +1061,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="419" column="18" selection-start="15410" selection-end="15410" vertical-scroll-proportion="0.0" vertical-offset="7367" max-vertical-offset="7686">
+        <state line="418" column="8" selection-start="15555" selection-end="15555" vertical-scroll-proportion="0.0" vertical-offset="7093" max-vertical-offset="8658">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1399765958501" expanded="true" signature="15369:15497" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="32" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="335" column="51" selection-start="19002" selection-end="19002" vertical-scroll-proportion="-2.2407408" vertical-offset="5909" max-vertical-offset="7110">
+        <state line="317" column="93" selection-start="18094" selection-end="18094" vertical-scroll-proportion="0.4201389" vertical-offset="5585" max-vertical-offset="7650">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#ul#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1087,13 +1118,6 @@
             <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="0.08896211" vertical-offset="0" max-vertical-offset="607">
-          <folding />
         </state>
       </provider>
     </entry>
