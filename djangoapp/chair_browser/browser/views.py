@@ -180,7 +180,7 @@ def rooms(request):
     rooms = RoomTable(room_list, order_by=request.GET.get('sort'))
 
     # Set pagination
-    paginator = Paginator(rooms.rows, 6)
+    paginator = Paginator(rooms.rows, 4)
     try:
         paginated_rooms = paginator.page(page)
     except PageNotAnInteger:
@@ -444,7 +444,7 @@ def rent(request):
                             #list = [room_name, conv_date, conv_from_time, conv_to_time,]
                             #dict['values'] = list
                             #dict['komunikat'] = 'Nie istnieje tak sparametryzowany obiekt w bazie'
-                            return HttpResponse(json.dumps('No room with such preferences is available'), mimetype='application/json')
+                            return HttpResponse(json.dumps('No rooms with such preferences are available'), mimetype='application/json')
 
                         reservation = reservations[0]
                         room = Room.objects.filter(pk=reservation.room.id)[0]
@@ -487,7 +487,7 @@ def rent(request):
                     except:
                         return HttpResponse(json.dumps('Error in reservation service'), mimetype='application/json')
                 except:
-                    return HttpResponse(json.dumps('No room with such preferences is available'), mimetype='application/json')
+                    return HttpResponse(json.dumps('No rooms with such preferences are available'), mimetype='application/json')
             except:
                 #response = defaultdict(list)
                 #list = [room_name, date, from_hour, to_hour]

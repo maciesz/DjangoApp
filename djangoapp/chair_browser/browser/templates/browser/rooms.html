@@ -10,7 +10,6 @@
 		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Rooms</title>
-
 		<!-- Bootstrap -->
 		<link  rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
@@ -27,9 +26,6 @@
 		</div>
 		<div class="container" style="margin-top: 4%">
 			<fieldset class="form-group">
-				<!--<div class="col-md-6 col-md-offset-1">
-					<label style="font-size: 150%; font-weight: normal; margin-bottom: 4%; text-decoration: underline;">Get all available rooms that include given phrase:</label>
-				</div>-->
 				<div class="col-md-5">
                     <label style="font-size: 140%; font-weight: normal; margin-bottom: 4%; text-decoration: underline;">Get all available rooms that include given phrase:</label>
 					<form method="get" action="{% url 'browser:rooms' %}">
@@ -53,20 +49,6 @@
                                 <div id="slider-range" style="width:130px;"></div>
                             </div>
                             <div class="col-md-6 col-md-offset-1">
-                                <!-- Tablica attrybutów do wyboru -->
-
-                                <!--<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
-                                    <tr>
-                                        <th>Attributes</th>
-                                    </tr>
-                                    {% for item in attribute_list %}
-                                    <tr>
-                                        <td>
-                                            {{ item }}
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </table>-->
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -85,27 +67,19 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--<ul id="attr_list">
-                                    <strong>Attributes:</strong>
-                                    <br />
-                                    {% for item in attribute_list %}
-                                        <input type="checkbox" name="{{ item }}" value="True"/>   {{ item }}<br />
-                                    {% endfor %}
-                                </ul>-->
                             </div>
                         </div>
                     </form>
 				</div>
-				<center class="col-md-5 col-md-offset-1" style="margin-top: 2%;">
+				<center class="col-md-6 col-md-offset-1" style="margin-top: 2%;">
                     {% if rooms %}
-
 						<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
 							<tr>
 								<th><a href="?sort=name">Name</a></th>
 								<th><a href="?sort=capacity">Capacity</a></th>
 								<th>Description</th>
 								<th>Selected</th>
-                                <th></th>
+                                <th>Go to form</th>
 							</tr>
 							{% for room in rooms %}
 								<tr>
@@ -114,7 +88,7 @@
 									<td>{{ value }}</td>
 								{% endfor %}
                                     <td>
-                                        <input type="button" class="btn btn-success query_btn" id="{{ name }}" name="{{ name }}" value="{{ name }}">
+                                        <input type="button" class="btn btn-success query_btn" id="{{ name }}" name="{{ name }}" value="Book">
                                     </td>
                                 {% endwith %}
 								</tr>
@@ -135,11 +109,10 @@
                                 {% endif %}
                             </span>
                         </div>
-						<div>
-							<input type="submit" value="Submit" class="btn btn-success" style="width: 60%;" id="submit_room">
-                            <button type="button" data-toggle="modal" data-target="#my_modal" class="btn btn-warning" style="width: 60%;">Launch modal</button>
-						</div>
-
+						<!--<div>
+							<input type="submit" value="Submit" id="submit" class="btn btn-success" style="width: 60%;" id="submit_room">
+                            <button type="button" data-toggle="modal" id="launch" data-target="#my_modal" class="btn btn-warning" style="width: 60%;">Launch modal</button>
+						</div>-->
                     {% else %}
                     <span class="glyphicon glyphicon-warning-sign" style="font-size: 1000%;"></span>
                     <br/>
@@ -164,14 +137,13 @@
                     <div class="modal-factor">
                         <center>
                             <button type="button" class="btn btn-default" data-dismiss="modal" id="close_button" style="width: 28%; margin-left: 10%;">Close</button>
-                            <button type="button" class="btn btn-primary" id="refresh_button" style="width: 28%; margin-right:10%;">Refresh</button>
+                            <button type="button" class="btn btn-primary refresh" style="width: 28%; margin-right:10%;">Refresh</button>
 
                             <br><br>
                             <div id="conf-alert" class="alert alert-warning" style="display:none; width: 80%;">
                                 Confirmation has been rejected&hellip;
                             </div>
                             <div id="transaction-alert" class="alert alert-danger" style="display: none; width: 80%;">
-                                Try of renting the room hasn't finished successfully&hellip;
                             </div>
                         </center>
                     </div>
@@ -183,27 +155,23 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>-->
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times</button>
                         <h4 class="modal-title">Confirm Your choice</h4>
                     </div>
                     <div class="modal-body" id="conf_data_modal" style="background-color: #f2efa4;">
-                        <!--<div class="col-md-6 col-md-offset-3">-->
-                            <!--<div class="jumbotron">-->
-                                <center>
-                                    <h1><strong>Confirmation</strong></h1>
-                                    <div style="margin-top: 6%;">
-                                        <h3>Reservation data</h3>
-                                        <ul class="list-group" style="margin-top: 6%; width: 60%;">
-                                            <li class="list-group-item" style="background-color: #ffe15b;"><strong id="conf_room"></strong></li>
-                                            <!--<li class="list-group-item"><strong id="conf_description">Description:</strong></li>-->
-                                            <li class="list-group-item" style="background-color: #ffeb57"><strong id="conf_date"></strong></li>
-                                            <li class="list-group-item" style="background-color: #fff261"><strong id="conf_from"></strong></li>
-                                            <li class="list-group-item" style="background-color: #fff869"><strong id="conf_to"></strong></li>
-                                        </ul>
-                                    </div>
-                                </center>
-                            <!--</div>-->
-                        <!--</div>-->
+                        <center>
+                            <h1><strong>Confirmation</strong></h1>
+                            <div style="margin-top: 6%;">
+                                <h3>Reservation data</h3>
+                                <ul class="list-group" style="margin-top: 6%; width: 60%;">
+                                    <li class="list-group-item" style="background-color: #ffe15b;"><strong id="conf_room"></strong></li>
+                                    <!--<li class="list-group-item"><strong id="conf_description">Description:</strong></li>-->
+                                    <li class="list-group-item" style="background-color: #ffeb57"><strong id="conf_date"></strong></li>
+                                    <li class="list-group-item" style="background-color: #fff261"><strong id="conf_from"></strong></li>
+                                    <li class="list-group-item" style="background-color: #fff869"><strong id="conf_to"></strong></li>
+                                </ul>
+                            </div>
+                        </center>
                     </div>
                     <div class="modal-factor" style="background-color: #f2efa4;">
                         <center>
@@ -230,23 +198,25 @@
         <script src="{{ STATIC_URL }}js/jquery.ptTimeSelect.js" type="text/javascript"></script>
         <script>
             $(document).ready(function() {
+
+                // Inicjacja zmiennych
                 var room_name = "";
                 var date = "";
                 var from_hour = "";
                 var to_hour = "";
-                $('#close_button').click(function(e) {
-                    $('.alert').hide();
-                });
+
+                // Wyłączenie cachowania
                 $.ajaxSetup({ cache: false });
-                $('#load_gif').ajaxStart(function() { $(this).show(); });
-                $('#load_gif').ajaxComplete(function() { $(this).hide(); });
+
                 // Stąd przychodzą zapytania o poszczególne pokoje
                 $('.query_btn').click(function() {
                     room_name = $(this).attr('name');
-                    console.log("Cośtam klikam");
-                    console.log("Name: " + room_name);
-                    console.log("Wchodzę do '$.ajax'");
                     $('#my_modal').modal('show');
+
+                    // Ładowanie loadera
+                    $('#load_gif').show();
+                    setTimeout(function() {
+                        $('#load_gif').hide();
                         var jqxhr = $.ajax("ajaxexample_json",
                         {
                             type: "GET",
@@ -254,17 +224,17 @@
                             data: {'room_name': room_name},
                         })
                         .done(function(data) {
+                            // Komunikat o powodzeniu
                             console.log('success');
-
+                            // Inicjacja zmiennych wewnetrznych
                             var counter = 0;
                             var str = '<div class="panel-group" id="date_collapse">';
+                            // Przegladanie danych w postaci JSON
                             $.each(data, function(key, value) {
-                                //console.log(data);
                                 date = key;
                                 counter++;
-                                console.log("Key: " + date + ", " + "Value: " + value);
-                                //str += '<input type="button" value=' + value + '>';
-                                console.log("DATE: " + date);
+
+                                // Budowa wnętrza my_modal
                                 str += '<div class="panel panel-default">';
                                 str += '<div class="panel-heading">';// id="date" value="' + date + '">';
                                 str += '<h4 class="panel-title">';
@@ -281,44 +251,59 @@
                                 str += '<br><br>';
                                 str += '<ul>';
                                 $.each(this, function(key, value) {
-                                    console.log("Key: " + key + ", value: " + value);
                                     str += '<li>' + value[0] + '-' + value[1] + '</li>';
                                 })
                                 str += '</ul>';
+                                str += '<br><br>';
+                                str += '<input name="room" class="form-control" value="' + room_name + '" style="width: 60%;" readonly>';
+                                str += '<br>';
+                                str += '<input name="date" class="form-control date" value="' + date + '" style="width: 60%;" readonly>';
+                                str += '<br>';
                                 str += '</div>';
                                 str += '<div class="col-md-6">';
 
-                                str += 'Room: ' + '<input name="room" value="' + room_name + '" style="margin-right:16%;" readonly>';
-                                str += 'Date: ' + '<input name="date" class="date" value="' + date + '" style="margin-right:16%;" readonly>';
-                                str += '<br><br>';
-                                str += 'From: ' + '<input name="to_hour" class="timepicker from" style="width: 31%; margin-right:9%;" value="05:00 PM"/>';
+                                // Budowanie prawej strony rozwijanego modala
 
-                                str += 'To: ' + '<input name="from_hour" class="timepicker to" style="width: 31%;" value="07:00 PM"/>';
+
+                                str += '<br>';
+
+                                str += '<div class="input-group">';
+                                str += '<span class="input-group-addon">From: </span>';
+                                str += '<input name="from_hour" class="timepicker from form-control" placeholder="..."/>';
+                                str += '</div>';
+                                str += '<br>';
+                                str += '<div class="input-group">';
+                                str += '<span class="input-group-addon">To: </span>';
+                                str += '<input name="to_hour" class="timepicker to form-control"  placeholder="..."/>';
+                                str += '</div>';
+
                                 str += '<br/><br/>';
                                 str += '<center>';
                                 str += '<input type="submit" class="btn btn-success reserve" value="Reserve" style="width: 100%;"/>';
                                 str += '</center>';
-                                //str += '</form>';
                                 str += '</div>';
                                 str += '</div></div></div>';
                             })
-
                             str += '</div></div>';
+
+                            // Zarzadzanie kolejnymi zdarzeniami
                             $('#data_modal').html(str);
                             $('#my_modal').modal('show');
+
+                            // Inicjalizacja zachowań dla komponentów stworzonych w czasie .done'a
                             $('.timepicker').ptTimeSelect({
-                                /*containerClass: "timeCntr",
+                                containerClass: "timeCntr",
                                 containerWidth: "350px",
                                 setButtonLabel: "Select",
-                                minutesLabel: "min",
-                                hoursLabel: "Hrs",*/
+                                minutesLabel: "Minutes",
+                                hoursLabel: "Hours",
                                 zIndex: "10000", // ustawić na jakiś bardzo duży
                             });
 
                             $('.reserve').click(function() {
                                 closest_from_hour = $('.from', $(this).closest("div")).val();
                                 closest_to_hour = $('.to', $(this).closest("div")).val();
-                                closest_date = $('.date', $(this).closest("div")).val();
+                                closest_date = $(this).parents().eq(2).find('.date').val();
                                 date = closest_date;
                                 from_hour = closest_from_hour;
                                 to_hour = closest_to_hour;
@@ -338,8 +323,10 @@
                         .always(function() {
                             console.log('complete');
                         })
+                    }, 2000);
                 });
 
+                // Ustawienia dotyczące przycisków, które są w pierwotnej strukturze modali
                 $('#reject_button').click(function() {
                     $('#confirmation_modal').modal('hide');
                     //$('.alert').hide();
@@ -363,6 +350,13 @@
                         })
                         .done(function(data) {
                             console.log('success' + data);
+                            $('#confirmation_modal').modal('hide');
+                            if (data != true) {
+                                $('#transaction-alert').text(data + "...");
+                                $('#my_modal').modal('show');
+                                $('#conf-alert').hide();
+                                $('#transaction-alert').show();
+                            }
                         })
                         .fail(function() {
                             console.log('fail');
@@ -370,31 +364,22 @@
                         .always(function() {
                         })
                 });
-/*                $('#confirm_button').click(function() {
-                    console.log("dataaa: " + date);
-                    var jqxhr = $.ajax("rent_json",
-                    {
-                        type: "GET",
-                        dataType: 'json',
-                        data: {'date': date},
 
-                    })
-                    .done(function(data) {
-                        console.log("Konfirmacja sukces");
-                        console.log(data);
-                        if (data == False) {
+                $('#close_button').click(function(e) {
+                    $('.alert').hide();
+                });
 
-                        } else {
+                $('.close').click(function(e) {
+                    $('.alert').hide();
+                });
 
-                        }
-                    })
-                    .fail(function() {
-                        console.log("Konfirmacja nie doszła do skutku");
-                    })
-                    .always(function() {
-                        console.log("Proces konfirmacji zakończona");
-                    })
-                }); */
+                $('.refresh').click(function(e) {
+                    $('#my_modal').modal('hide');
+                    setTimeout(function() {
+                        $('#' + room_name).trigger('click');
+                    }, 500);
+                });
+
                 // Ustawienia sliderów
                 $(function() {
                     $("#slider-range").slider({
