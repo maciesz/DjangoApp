@@ -388,6 +388,7 @@ def ajax(request):
                     previous_to = time_to
                     lst = [previous_from, previous_to]
                     result_time_list.append(lst)
+                    first_elt = False
                 else:
                     curr_from = time_from
                     curr_to = time_to
@@ -428,6 +429,33 @@ def rent(request):
                 to_hour = datetime.datetime.strptime(request.GET.get('to_hour'), "%I:%M %p").time()
 
                 try:
+                    try:
+                        terms = Term.objects.filter(
+                            Q(room__name=room_name) &
+                            Q(booking_date=date)
+                        ).order_by('from_hour', 'to')
+
+                        is_first = True
+                        last_term = None
+                        previous_to = None
+                        to_be_added = []
+                        for term in terms:
+                            if is_first:
+                                last_term = term
+                                previous_to = term.to
+                                is_first = False
+                            else:
+                                if term.from_hour == previous_to:
+                                    last_term.to = term.to
+                                    last_term.save()
+                                    term.delete()
+                                else:
+                                    last_term = term
+                                    previous_to = term.to
+
+                    except Exception as e:
+                        return HttpResponse(json.dumps(str(e)), mimetype='application/json')
+
                     reservations = Term.objects.filter(
                         Q(room__name=room_name) &
                         Q(booking_date=date) &

@@ -1,0 +1,54 @@
+
+	def save(self, *args, **kwargs):
+        try:
+            self.full_clean()
+        except ValidationError as err:
+            non_field_errors = err.error_dict[NON_FIELD_ERRORS]
+
+        super(Term, self).save(self, *args, **kwargs)
+
+    def clean(self, *args, **kwargs):
+        # Check if date is expired
+        if self.booking_date < date.today():
+            raise ValidationError('Can not book the date from the past.')
+        if self.booking_date == date.today():
+            if self.from_hour.hour < timezone.now().hour:
+                raise ValidationError('Requested hour is from the past.')
+            if self.from_hour.minute < timezone.now().minute:
+                raise ValidationError('Suggested staring time begun couple of minutes ago.')
+        # Check if relation start-end is valid:
+        if self.from_hour >= self.to:
+            raise ValidationError('Ending time must be strongly greater than starting time.')
+		# Check if term does not collide with other terms:
+        try:
+            term = Term.objects.get(
+                Q(room__name=self.room.name),
+                Q(booking_date=self.booking_date),
+                ~Q(from_hour__gte=self.to),
+                ~Q(to__lte=self.from_hour),
+            )
+        except Term.MultipleObjectsReturned:
+            raise ValidationError('Term collides with room-renting schedule.')
+        except Term.DoesNotExist:
+            pass
+        else:
+            if term:
+                raise ValidationError('Term collides with room-renting schedule.')
+        # Check whether term collides with reservation
+        try:
+            reservation = Reservation.objects.get(
+                Q(room__name=self.room.name),
+                Q(booking_date=self.booking_date),
+                ~Q(from_hour__gte=self.to),
+                ~Q(to__lte=self.from_hour),
+            )
+        except Reservation.MultipleObjectsReturned:
+            raise ValidationError('Requested term collides with reservations.')
+        except Reservation.DoesNotExist:
+            pass
+        else:
+            if reservation:
+                raise ValidationError('Requested term collides with reservations.')
+
+    def full_clean(self, *args, **kwargs):
+        return self.clean(*args, **kwargs)

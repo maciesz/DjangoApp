@@ -1,7 +1,7 @@
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.db import models
 from django.db.models import Q
-from browser.exceptions import TimeIntervalException, ScheduleException, ArchaicDateTimeException
+#from browser.exceptions import TimeIntervalException, ScheduleException, ArchaicDateTimeException
 from django.contrib.auth.models import User
 import django_tables2 as tables
 from datetime import datetime, date
@@ -42,13 +42,14 @@ class RoomTable(tables.Table):
 	selection = tables.CheckBoxColumn(accessor='pk')
 
 class Term(models.Model):
-	""" Term model. Involves info about booking term for concrete room """
-	booking_date=models.DateField()
-	from_hour=models.TimeField('from')
-	to=models.TimeField()
-	room=models.ForeignKey(Room)
+    """ Term model. Involves info about booking term for concrete room """
+    booking_date=models.DateField()
+    from_hour=models.TimeField('from')
+    to=models.TimeField()
+    room=models.ForeignKey(Room)
 
-	def __unicode__(self):
+
+    def __unicode__(self):
 		return "Date: " + str(self.booking_date) + " From: " + str(self.from_hour) + " To: " + str(self.to)
 
 class TermTable(tables.Table):
