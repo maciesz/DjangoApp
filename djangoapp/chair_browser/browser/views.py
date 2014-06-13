@@ -365,14 +365,19 @@ def main(request):
 def ajax(request):
     if request.GET:
         room_name = request.GET.get('room_name', '3440')
-        dates = Term.objects.filter(room__name=room_name).values_list('booking_date', flat = True).distinct()
+        current_date = datetime.datetime.today()
+        dates = Term.objects.filter(
+            Q(room__name=room_name) &
+            Q(booking_date__gte=current_date)
+        ).values_list('booking_date', flat = True).distinct()
         to_json = []
         dictionary = defaultdict(list)
         for date in dates:
             d = date.strftime("%Y-%m-%d")
             time_list = \
                 Term.objects.filter(
-                    Q(room__name=room_name) & Q(booking_date=date)
+                    Q(room__name=room_name) &
+                    Q(booking_date=date)
                 ).values_list('from_hour', 'to').order_by('from_hour', 'to')
 
             #time_list.order_by('-from_hour')

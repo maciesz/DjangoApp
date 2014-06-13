@@ -196,17 +196,64 @@
 	    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <!--Timepicker-->
         <script src="{{ STATIC_URL }}js/jquery.ptTimeSelect.js" type="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/src/model_classes.js" type ="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/src/datetime_setter.js" type="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/src/JSDB.js" type="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/src/content_builder.js" type="text/javascript"></script>
         <script>
             $(document).ready(function() {
+                // Inicjalizacja bazy danych.
+                var jsdb = new JSDB();
 
-                // Inicjacja zmiennych
-                var room_name = "";
-                var date = "";
-                var from_hour = "";
-                var to_hour = "";
+                // Inicjalizacja budowniczego kontentu modala.
+                var content_builder = new ContentBuilder();
 
-                // Wyłączenie cachowania
+                // Inicjalizacja struktur.
+                var attribute_collection = new Array();
+                var room_collection = new Array();
+                var term_collection = new Array();
+
+                // Inicjalizacja zmiennych.
+                var room_name = '';
+                var date = '';
+                var from_hour = '';
+                var to_hour = '';
+
+                var atrybut = new Attribute('bldabjad');
+                console.log(atrybut.name);
+                // Wyłączenie cachowania.
                 $.ajaxSetup({ cache: false });
+
+                var datetime_setter = new DateTime();
+
+                // Funkcja ściągająca lekko-zmodyfikowany kontent bazy danych.
+                // Dane dotyczące pokoi, terminów i atrybutów są zapisywane w
+                // specjalnie do tego przeznaczonych tablicach.
+                function load_content() {
+                    var jqxhr = $.ajax('content_json',
+                    {
+                        type: 'GET',
+                        dataType: 'json',
+                        data: {
+                            'date': datetime_setter.getDate(),
+                            'time': datetime_setter.getCurrentTime()
+                        }
+                    })
+                    .done(function(data) {
+                        // Zaktualizuj stan bazy danych po stronie klienta.
+                        jsdb.uploadContent(data);
+                        // Komunikat o powodzeniu pobrania zawartości bazy.
+                        console.log('successfully uploaded db content.');
+                    })
+                    .fail(function() {
+                        // Wypisz komunikat o nieudanym ściągnięciu danych z bazy.
+                        console.log('failed during loading database content.');
+                    })
+                    .always(function() {
+                        // Wypisz komunikat o zakończeniu operacji.
+                        console.log('exiting after loading database content.');
+                    })
+                }
 
                 // Stąd przychodzą zapytania o poszczególne pokoje
                 $('.query_btn').click(function() {
@@ -219,73 +266,16 @@
                         $('#load_gif').hide();
                         var jqxhr = $.ajax("ajaxexample_json",
                         {
-                            type: "GET",
+                            type: 'GET',
                             dataType: 'json',
                             data: {'room_name': room_name},
                         })
                         .done(function(data) {
-                            // Komunikat o powodzeniu
+                            // Komunikat o powodzeniu.
                             console.log('success');
-                            // Inicjacja zmiennych wewnetrznych
-                            var counter = 0;
-                            var str = '<div class="panel-group" id="date_collapse">';
-                            // Przegladanie danych w postaci JSON
-                            $.each(data, function(key, value) {
-                                date = key;
-                                counter++;
-
-                                // Budowa wnętrza my_modal
-                                str += '<div class="panel panel-default">';
-                                str += '<div class="panel-heading">';// id="date" value="' + date + '">';
-                                str += '<h4 class="panel-title">';
-                                str += '<a data-toggle="collapse" data-parent="date_collapse" href="#collapse';
-                                str += counter + '">';
-                                str += '<strong>' + counter + '. </strong>' + date;
-                                str += '</a></h4></div>';
-                                str += '<div id="collapse' + counter + '" class="panel-collapse collapse';
-                                str += (counter == 1) ? ' in">' : '">';
-                                str += '<div class="panel-body">';
-                                str += '<div class="row">';
-                                str += '<div class="col-md-6">';
-                                str += 'Suggested hour intervals are: ';
-                                str += '<br><br>';
-                                str += '<ul>';
-                                $.each(this, function(key, value) {
-                                    str += '<li>' + value[0] + '-' + value[1] + '</li>';
-                                })
-                                str += '</ul>';
-                                str += '<br><br>';
-                                str += '<input name="room" class="form-control" value="' + room_name + '" style="width: 60%;" readonly>';
-                                str += '<br>';
-                                str += '<input name="date" class="form-control date" value="' + date + '" style="width: 60%;" readonly>';
-                                str += '<br>';
-                                str += '</div>';
-                                str += '<div class="col-md-6">';
-
-                                // Budowanie prawej strony rozwijanego modala
-
-
-                                str += '<br>';
-
-                                str += '<div class="input-group">';
-                                str += '<span class="input-group-addon">From: </span>';
-                                str += '<input name="from_hour" class="timepicker from form-control" placeholder="..." readonly/>';
-                                str += '</div>';
-                                str += '<br>';
-                                str += '<div class="input-group">';
-                                str += '<span class="input-group-addon">To: </span>';
-                                str += '<input name="to_hour" class="timepicker to form-control"  placeholder="..." readonly/>';
-                                str += '</div>';
-
-                                str += '<br/><br/>';
-                                str += '<center>';
-                                str += '<input type="submit" class="btn btn-success reserve" value="Reserve" style="width: 100%;"/>';
-                                str += '</center>';
-                                str += '</div>';
-                                str += '</div></div></div>';
-                            })
-                            str += '</div></div>';
-
+                            // Na podstawie otrzymanych danych JSONowych zbuduj
+                            // kontent modali.
+                            str = content_builder.buildContent(data, room_name);
                             // Zarzadzanie kolejnymi zdarzeniami
                             $('#data_modal').html(str);
                             $('#my_modal').modal('show');
