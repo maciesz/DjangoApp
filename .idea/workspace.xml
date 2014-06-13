@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/JSDB.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/content_builder.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/model_classes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -40,10 +40,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="rooms.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="rooms.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="63" selection-start="10791" selection-end="10791" vertical-scroll-proportion="0.3040422" vertical-offset="3301" max-vertical-offset="7254">
+            <state line="246" column="17" selection-start="13352" selection-end="13352" vertical-scroll-proportion="-7.2027025" vertical-offset="3895" max-vertical-offset="7254">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,10 +60,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="55" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="content_json.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="28" selection-start="58" selection-end="58" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="9" selection-start="382" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1584">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajaxexample_json.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="23" selection-start="53" selection-end="53" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="265" column="0" selection-start="9473" selection-end="9473" vertical-scroll-proportion="-11.592592" vertical-offset="4457" max-vertical-offset="9684">
+            <state line="25" column="2" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.7305195" vertical-offset="0" max-vertical-offset="10836">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -98,14 +134,15 @@
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/ajaxexample_json.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/terms.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rent.html" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/inny.html" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/chair_browser/settings.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/tests/clean" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       </list>
     </option>
   </component>
@@ -240,71 +277,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djangoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chair_browser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="browser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="djangoapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chair_browser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="browser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -529,7 +502,11 @@
       <created>1399908205499</created>
       <updated>1399908205500</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Dodanie szkicu klas dla modeli z bazy danych, pliku z klasą reprezentującą bazę danych po stronie klienta, klasę zegarka oraz przerzucenia odpowiedzialności budowy kontentu modala do osobnej klasy budowniczego.">
+      <created>1402690549216</created>
+      <updated>1402690549216</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -537,8 +514,9 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21083455" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -547,7 +525,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21083455" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -598,7 +575,8 @@
     <MESSAGE value="Dodanie pełnej komunikacji via AJAX ;-)" />
     <MESSAGE value="Nadanie wszystkim inputom bootstrapowej klasy form-control, dodanie przycisku odświeżającego zapytanie oraz podłączenie i synchronizacja alertów w modalu głównym." />
     <MESSAGE value="Dodanie pliku clean ze szkicem validacji, scalanie terminów bezpośrednio następujących po sobie." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodanie pliku clean ze szkicem validacji, scalanie terminów bezpośrednio następujących po sobie." />
+    <MESSAGE value="Dodanie szkicu klas dla modeli z bazy danych, pliku z klasą reprezentującą bazę danych po stronie klienta, klasę zegarka oraz przerzucenia odpowiedzialności budowy kontentu modala do osobnej klasy budowniczego." />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodanie szkicu klas dla modeli z bazy danych, pliku z klasą reprezentującą bazę danych po stronie klienta, klasę zegarka oraz przerzucenia odpowiedzialności budowy kontentu modala do osobnej klasy budowniczego." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -912,13 +890,6 @@
         <state line="47" column="28" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1242" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="32" selection-start="755" selection-end="755" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/room.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="66" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="702">
@@ -936,20 +907,6 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/chair_browser/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="29" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0" vertical-offset="14" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="25" selection-start="55" selection-end="55" vertical-scroll-proportion="0.08985025" vertical-offset="0" max-vertical-offset="601">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="9" selection-start="382" selection-end="385" vertical-scroll-proportion="-4.5185184" vertical-offset="22" max-vertical-offset="1584">
           <folding />
         </state>
       </provider>
@@ -975,18 +932,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="265" column="0" selection-start="9473" selection-end="9473" vertical-scroll-proportion="-11.592592" vertical-offset="4457" max-vertical-offset="9684">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+        <state line="3" column="23" selection-start="53" selection-end="53" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="28" selection-start="58" selection-end="58" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="252">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="55" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="63" selection-start="10791" selection-end="10791" vertical-scroll-proportion="0.3040422" vertical-offset="3301" max-vertical-offset="7254">
+        <state line="246" column="17" selection-start="13352" selection-end="13352" vertical-scroll-proportion="-7.2027025" vertical-offset="3895" max-vertical-offset="7254">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -998,6 +967,22 @@
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="9" selection-start="382" selection-end="385" vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="2" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.7305195" vertical-offset="0" max-vertical-offset="10836">
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

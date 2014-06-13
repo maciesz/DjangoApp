@@ -236,7 +236,7 @@
                         dataType: 'json',
                         data: {
                             'date': datetime_setter.getDate(),
-                            'time': datetime_setter.getCurrentTime()
+                            'time': datetime_setter.getCurrentTime(),
                         }
                     })
                     .done(function(data) {
@@ -264,7 +264,7 @@
                     $('#load_gif').show();
                     setTimeout(function() {
                         $('#load_gif').hide();
-                        var jqxhr = $.ajax("ajaxexample_json",
+                        var jqxhr = $.ajax('ajaxexample_json',
                         {
                             type: 'GET',
                             dataType: 'json',

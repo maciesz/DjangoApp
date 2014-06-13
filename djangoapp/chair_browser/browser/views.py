@@ -23,6 +23,9 @@ import time
 
 
 # Based on: http://www.tangowithdjango.com/book/chapters/login.html
+# from libtorrent.request_dropped_alert import request_dropped_alert
+
+
 def register(request):
     # Get request context
     context = RequestContext(request)
@@ -360,6 +363,67 @@ def contact_form(request):
 
 def main(request):
     return render_to_response('ajaxexample.html', context_instance=RequestContext(request))
+
+@login_required
+def load_db_content(request):
+    if request.GET:
+        # By default set date and time to current.
+        default_date = datetime.datetime.now().date()
+        default_time = datetime.datetime.now().time()
+        # Read concrete parametres from request.
+        date_str = request.GET.get('date')
+        time_str = request.GET.get('time')
+        # Parse data.
+        if date_str:
+            # Format has been set by JS-caller.
+            date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+        else:
+            # By default set current one.
+            date = default_date
+        # Parsowanie czasu.
+        if time_str:
+            time = datetime.datetime.strptime(time_str, "%H:%M").time()
+        else:
+            time = default_time
+
+        # Initialize dictionary.
+        dictionary = defaultdict(list)
+
+        # Load all attributes from database.
+        attribute_list = Attribute.all().values_list('attribute', flat=True)
+
+        # Load all room objects and slightly modify content.
+        room_list = []
+        for room in Room.objects.all():
+            parameter_list = []
+            parameter_list.extend(room.name, room.capacity, room.description)
+            parameter_list.append(
+                room.attributes.all().values_list('attribute')
+            )
+            room_list.append(parameter_list)
+
+        # Filter terms by date and time.
+        terms = Term.objects.filter(
+            Q(booking_date__gte=date) &
+            Q(from_hour__gte=time)
+        )
+        # Behave analogously to rooms.
+        term_list = []
+        for term in terms:
+            parameter_list = []
+            parameter_list.extend(
+                term.room.name, term.booking_date, term.from_hour, term.to
+            )
+            term_list.append(parameter_list)
+
+        # Fulfull dictionary with proper data.
+        dictionary['Attribute'] = attribute_list
+        dictionary['Room'] = room_list
+        dictionary['Term'] = term_list
+
+        # Parse dictionary to JSON and send data over HttpResponse.
+        response_data = json.dumps(dictionary)
+        return HttpResponse(response_data, mimetype='application/json')
 
 @login_required
 def ajax(request):

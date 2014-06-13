@@ -7,30 +7,28 @@ function DateTime() {
 DateTime.prototype.getDate = function() {
 	// Domyślnie getMonth liczy miesiące od 0 do 11.
 	var date =
-		setter.getDate() +
+		setter.getFullYear() +
 		date_separator +
 		(setter.getMonth() + 1) +
 		date_separator +
-		setter.getFullYear();
+		setter.getDay();
 	
 	return date;
 }
 
 DateTime.prototype.getCurrentTime = function() {
-	// Ustal aktualną godzinę.
+	/*// Ustal aktualną godzinę.
 	var hours = setter.getHours();
 	// Dopasuj format('AM'/'PM').
 	var ending = (hours > 12) ? 'PM' : 'AM';
 	// Zmodyfikuj odpowiednio format godziny.
-	hours = (hours > 12) ? (hours - 12) : hours;
+	hours = (hours > 12) ? (hours - 12) : hours;*/
 	// Skonstruuj ostateczny napis reprezentujący datę 
 	// zgodną z przyjętym formatem.
 	var current_time = 
-		hours +
+		setter.getHours() +
 		time_separator +
-		setter.getMinutes() +
-		" " +
-		ending;
+		setter.getMinutes();
 	
 	return current_time;
 }

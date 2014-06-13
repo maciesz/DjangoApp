@@ -16,4 +16,5 @@ urlpatterns=patterns('',
 	url(r'^commit/$', views.commit, name='commit'),
     url(r'^rooms/ajaxexample_json/$', views.ajax, name='ajax'),
     url(r'^rooms/rent/$', views.rent, name='rent'),
+    url(r'^rooms/content_json/$', views.load_db_content, name="load_content"),
 )
