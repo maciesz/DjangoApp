@@ -3,12 +3,6 @@ function JSDB() {
 	this.attribute_collection = new Array();
 	this.room_collection = new Array();
 	this.term_collection = new Array();
-	// Stałe podające dokładną nazwę klucza
-	// dla poszczególnych słowników konkretnych modeli.
-	// Wykorzystywane w momencie ściągania danych z bazy(offline).
-	this.attribute_key = 'Attribute';
-	this.room_key = 'Room';
-	this.term_key = 'Term';
 }
 
 // 'data' jest to plik JSONowy,

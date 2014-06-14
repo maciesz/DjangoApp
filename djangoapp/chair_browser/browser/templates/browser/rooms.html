@@ -71,6 +71,9 @@
                         </div>
                     </form>
 				</div>
+                <center class="row col-md-6 col-md-offset-1" style="margin-top: 2%;">
+                    <input type="button" class="btn btn-warning" id="load_data" name="load_data" value="Reload data" style="width: 100%;">
+                </center>
 				<center class="col-md-6 col-md-offset-1" style="margin-top: 2%;">
                     {% if rooms %}
 						<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
@@ -371,6 +374,10 @@
                     setTimeout(function() {
                         $('#' + room_name).trigger('click');
                     }, 500);
+                });
+
+                $('#load_data').click(function(e) {
+                    load_content();
                 });
 
                 // Ustawienia sliderów

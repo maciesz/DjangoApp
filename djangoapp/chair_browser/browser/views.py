@@ -401,8 +401,8 @@ def load_db_content(request):
 
         # Filter terms by date and time.
         terms = Term.objects.filter(
-            Q(booking_date__gte=date) &
-            Q(from_hour__gte=time)
+            (Q(booking_date__gt=date)) |
+            (Q(booking_date=date) & Q(from_hour__gte=time))
         )
         # Behave analogously to rooms.
         term_list = []
