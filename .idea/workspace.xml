@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html" />
+    <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="Fix funkcji">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/JSDB.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/JSDB.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -43,7 +40,7 @@
       <file leaf-file-name="rooms.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="17" selection-start="13352" selection-end="13352" vertical-scroll-proportion="-7.2027025" vertical-offset="3895" max-vertical-offset="7254">
+            <state line="244" column="35" selection-start="13249" selection-end="13249" vertical-scroll-proportion="-2.554054" vertical-offset="4203" max-vertical-offset="7308">
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -99,7 +96,7 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="2" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.7305195" vertical-offset="0" max-vertical-offset="10836">
+            <state line="406" column="18" selection-start="14927" selection-end="14927" vertical-scroll-proportion="2.0454545" vertical-offset="6048" max-vertical-offset="10818">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -140,8 +137,8 @@
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/models.py" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/ajaxexample_json.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/content_json.html" />
-        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py" />
+        <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
         <option value="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       </list>
     </option>
@@ -506,7 +503,11 @@
       <created>1402690549216</created>
       <updated>1402690549216</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Drobna modyfikacja w sourcach jsowych związanych z templatem rooms.html, dodanie szkicu funkcji obsługujące żądanie ściągnięcia bazy(w lekko zmodyfikowanej formie).">
+      <created>1402696635113</created>
+      <updated>1402696635113</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -576,7 +577,8 @@
     <MESSAGE value="Nadanie wszystkim inputom bootstrapowej klasy form-control, dodanie przycisku odświeżającego zapytanie oraz podłączenie i synchronizacja alertów w modalu głównym." />
     <MESSAGE value="Dodanie pliku clean ze szkicem validacji, scalanie terminów bezpośrednio następujących po sobie." />
     <MESSAGE value="Dodanie szkicu klas dla modeli z bazy danych, pliku z klasą reprezentującą bazę danych po stronie klienta, klasę zegarka oraz przerzucenia odpowiedzialności budowy kontentu modala do osobnej klasy budowniczego." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodanie szkicu klas dla modeli z bazy danych, pliku z klasą reprezentującą bazę danych po stronie klienta, klasę zegarka oraz przerzucenia odpowiedzialności budowy kontentu modala do osobnej klasy budowniczego." />
+    <MESSAGE value="Drobna modyfikacja w sourcach jsowych związanych z templatem rooms.html, dodanie szkicu funkcji obsługujące żądanie ściągnięcia bazy(w lekko zmodyfikowanej formie)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Drobna modyfikacja w sourcach jsowych związanych z templatem rooms.html, dodanie szkicu funkcji obsługujące żądanie ściągnięcia bazy(w lekko zmodyfikowanej formie)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -955,7 +957,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="17" selection-start="13352" selection-end="13352" vertical-scroll-proportion="-7.2027025" vertical-offset="3895" max-vertical-offset="7254">
+        <state line="244" column="35" selection-start="13249" selection-end="13249" vertical-scroll-proportion="-2.554054" vertical-offset="4203" max-vertical-offset="7308">
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -980,7 +982,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="1022" selection-end="1022" vertical-scroll-proportion="0.7305195" vertical-offset="0" max-vertical-offset="10836">
+        <state line="406" column="18" selection-start="14927" selection-end="14927" vertical-scroll-proportion="2.0454545" vertical-offset="6048" max-vertical-offset="10818">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>

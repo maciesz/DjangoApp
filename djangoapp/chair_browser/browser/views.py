@@ -6,25 +6,15 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from browser.models import Room, Term, Reservation, Attribute
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
-from browser.models import Room, Term, Reservation, RoomTable, TermTable
+from browser.models import Room, Term, Reservation, Attribute, RoomTable, TermTable
 from django.db.models import Q
-from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
 from django.db import IntegrityError, transaction
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from collections import defaultdict
 import json
 import datetime
 import time
-
-
-
-
-# Based on: http://www.tangowithdjango.com/book/chapters/login.html
-# from libtorrent.request_dropped_alert import request_dropped_alert
-
 
 def register(request):
     # Get request context
@@ -390,15 +380,22 @@ def load_db_content(request):
         dictionary = defaultdict(list)
 
         # Load all attributes from database.
-        attribute_list = Attribute.all().values_list('attribute', flat=True)
-
+        attribute_list = Attribute.objects.values_list('attribute', flat=True)
+        final_attr_list = []
+        for attr in attribute_list:
+            final_attr_list.append(attr)
         # Load all room objects and slightly modify content.
         room_list = []
         for room in Room.objects.all():
             parameter_list = []
-            parameter_list.extend(room.name, room.capacity, room.description)
+            parameter_list.extend([room.name, room.capacity, room.description])
+            room_attr_list = \
+                room.attributes.all().values_list('attribute', flat=True)
+            final_room_attr_list = []
+            for attr in room_attr_list:
+                final_room_attr_list.append(attr)
             parameter_list.append(
-                room.attributes.all().values_list('attribute')
+                final_room_attr_list
             )
             room_list.append(parameter_list)
 
@@ -411,17 +408,19 @@ def load_db_content(request):
         term_list = []
         for term in terms:
             parameter_list = []
-            parameter_list.extend(
-                term.room.name, term.booking_date, term.from_hour, term.to
-            )
+            parameter_list.append(term.room.name)
+            parameter_list.append(term.booking_date.strftime("%Y-%m-%d"))
+            parameter_list.append(term.from_hour.strftime("%H:%M"))
+            parameter_list.append(term.to.strftime("%H:%M"))
+
             term_list.append(parameter_list)
 
         # Fulfull dictionary with proper data.
-        dictionary['Attribute'] = attribute_list
+        dictionary['Attribute'] = final_attr_list
         dictionary['Room'] = room_list
         dictionary['Term'] = term_list
 
-        # Parse dictionary to JSON and send data over HttpResponse.
+        # Parse data and send it over HttpResponse.
         response_data = json.dumps(dictionary)
         return HttpResponse(response_data, mimetype='application/json')
 

@@ -7,12 +7,13 @@ function DateTime() {
 DateTime.prototype.getDate = function() {
 	// Domyślnie getMonth liczy miesiące od 0 do 11.
 	var date =
-		setter.getFullYear() +
-		date_separator +
-		(setter.getMonth() + 1) +
-		date_separator +
-		setter.getDay();
-	
+		this.setter.getFullYear() +
+		this.date_separator +
+		(this.setter.getMonth() + 1) +
+		this.date_separator +
+		this.setter.getDay();
+	// [DEBUG] Wypisz efekt.
+	console.log("Utworzyłem datę: " + date);
 	return date;
 }
 
@@ -26,9 +27,10 @@ DateTime.prototype.getCurrentTime = function() {
 	// Skonstruuj ostateczny napis reprezentujący datę 
 	// zgodną z przyjętym formatem.
 	var current_time = 
-		setter.getHours() +
-		time_separator +
-		setter.getMinutes();
-	
+		this.setter.getHours() +
+		this.time_separator +
+		this.setter.getMinutes();
+	// [DEBUG] Wypisz efekt.
+	console.log("Utworzyłem czas: " + current_time);
 	return current_time;
 }

@@ -230,6 +230,7 @@
                 // Dane dotyczące pokoi, terminów i atrybutów są zapisywane w
                 // specjalnie do tego przeznaczonych tablicach.
                 function load_content() {
+                    console.log('Wysłano prośbę o wczytanie kontenta strony');
                     var jqxhr = $.ajax('content_json',
                     {
                         type: 'GET',
@@ -241,7 +242,7 @@
                     })
                     .done(function(data) {
                         // Zaktualizuj stan bazy danych po stronie klienta.
-                        jsdb.uploadContent(data);
+                        jsdb.updateContent(data);
                         // Komunikat o powodzeniu pobrania zawartości bazy.
                         console.log('successfully uploaded db content.');
                     })
@@ -389,6 +390,8 @@
                         $("#slider-range").slider("values", 1)
                     );
                 });
+
+                load_content();
             });
         </script>
 	</body>

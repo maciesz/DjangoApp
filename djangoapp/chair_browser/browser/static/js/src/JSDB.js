@@ -20,21 +20,22 @@ JSDB.prototype.updateContent = function(data) {
 	// To zabiera(podobno) trochę więcej czasu niż arr=[],
 	// ale zwalnianie pamięci ,,na bieżąco'' w przypadku
 	// przeglądarki ,,offline'' wydaje się być sensowne.
-	attribute_collection.length = 0;
-	room_collection.length = 0;
-	term_collection.length = 0;
+	this.attribute_collection.length = 0;
+	this.room_collection.length = 0;
+	this.term_collection.length = 0;
 	
 	// Iterowanie po słowniku.
 	$.each(data, function(model_dict, values) {
 		// Wypisz nazwę klucza.
 		console.log('Klucz: ' + model_dict);
+		console.log('Wartości: ' + values[0]);
 		// W zależności od klucza.
 		switch (model_dict) {
-			case attribute_key:
-				attribute_collection.push(new Attribute(values[1]));
+			case this.attribute_key:
+				this.attribute_collection.push(new Attribute(values[1]));
 				break;
-			case room_key:
-				room_collection.push(new Room(
+			case this.room_key:
+				this.room_collection.push(new Room(
 						values[1], // name
 						values[2], // capacity
 						values[3], // description
@@ -42,8 +43,8 @@ JSDB.prototype.updateContent = function(data) {
 					)
 				);
 				break;
-			case term_key:
-				term_collection.push(new Term(
+			case this.term_key:
+				this.term_collection.push(new Term(
 						values[1], // booking_date
 						values[2], // from
 						values[3], // to
