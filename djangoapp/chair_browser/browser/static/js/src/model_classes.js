@@ -9,11 +9,11 @@ function Room(name, capacity, description, attributes) {
 	this.attribute_list = attributes;
 }
 
-function Term(booking_date, from, to, room_name) {
+function Term(room_name, booking_date, from, to) {
+	this.room_name = room_name;
 	this.booking_date = booking_date;
 	this.from = from;
 	this.to = to;
-	this.room_name = room_name;
 }
 
 function Attribute(name) {

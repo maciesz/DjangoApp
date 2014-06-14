@@ -245,6 +245,8 @@
                         jsdb.updateContent(data);
                         // Komunikat o powodzeniu pobrania zawartości bazy.
                         console.log('successfully uploaded db content.');
+                        // Sprawdź, czy kontent został właściwie zaktualizowany.
+                        jsdb.debugAfterUpdate();
                     })
                     .fail(function() {
                         // Wypisz komunikat o nieudanym ściągnięciu danych z bazy.

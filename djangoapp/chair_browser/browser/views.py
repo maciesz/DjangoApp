@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
-from browser.forms import UserForm, UserProfileForm, TermForm, ContactForm
+from browser.forms import UserForm, TermForm, ContactForm
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
