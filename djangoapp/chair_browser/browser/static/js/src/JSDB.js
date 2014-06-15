@@ -69,6 +69,10 @@ JSDB.prototype.updateContent = function(data) {
 	attr_col.length = 0;
 	r_col.length = 0;
 	t_col.length = 0;
+	// Posortuj tablicę pokoi.
+	// Dzięki temu w czasie liniowym względem długości tej tablicy
+	// jesteśmy później w Builderze stwierdzić o przecięciu tablic.
+	this.room_collection.sort();
 }
 
 JSDB.prototype.debugAfterUpdate = function() {

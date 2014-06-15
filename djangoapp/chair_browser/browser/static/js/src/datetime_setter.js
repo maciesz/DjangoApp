@@ -11,7 +11,7 @@ DateTime.prototype.getDate = function() {
 		this.date_separator +
 		(this.setter.getMonth() + 1) +
 		this.date_separator +
-		this.setter.getDay();
+		this.setter.getDay() + 1;
 	// [DEBUG] Wypisz efekt.
 	//console.log("Utworzyłem datę: " + date);
 	return date;

@@ -356,73 +356,76 @@ def main(request):
 
 @login_required
 def load_db_content(request):
-    if request.GET:
-        # By default set date and time to current.
-        default_date = datetime.datetime.now().date()
-        default_time = datetime.datetime.now().time()
-        # Read concrete parametres from request.
-        date_str = request.GET.get('date')
-        time_str = request.GET.get('time')
-        # Parse data.
-        if date_str:
-            # Format has been set by JS-caller.
-            date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
-        else:
-            # By default set current one.
-            date = default_date
-        # Parsowanie czasu.
-        if time_str:
-            time = datetime.datetime.strptime(time_str, "%H:%M").time()
-        else:
-            time = default_time
+    try:
+        if request.GET:
+            # By default set date and time to current.
+            default_date = datetime.datetime.now().date()
+            default_time = datetime.datetime.now().time()
+            # Read concrete parametres from request.
+            date_str = request.GET.get('date')
+            time_str = request.GET.get('time')
+            # Parse data.
+            if date_str:
+                # Format has been set by JS-caller.
+                date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+            else:
+                # By default set current one.
+                date = default_date
+            # Parsowanie czasu.
+            if time_str:
+                time = datetime.datetime.strptime(time_str, "%H:%M").time()
+            else:
+                time = default_time
 
-        # Initialize dictionary.
-        dictionary = defaultdict(list)
+            # Initialize dictionary.
+            dictionary = defaultdict(list)
 
-        # Load all attributes from database.
-        attribute_list = Attribute.objects.values_list('attribute', flat=True)
-        final_attr_list = []
-        for attr in attribute_list:
-            final_attr_list.append(attr)
-        # Load all room objects and slightly modify content.
-        room_list = []
-        for room in Room.objects.all():
-            parameter_list = []
-            parameter_list.extend([room.name, room.capacity, room.description])
-            room_attr_list = \
-                room.attributes.all().values_list('attribute', flat=True)
-            final_room_attr_list = []
-            for attr in room_attr_list:
-                final_room_attr_list.append(attr)
-            parameter_list.append(
-                final_room_attr_list
+            # Load all attributes from database.
+            attribute_list = Attribute.objects.values_list('attribute', flat=True)
+            final_attr_list = []
+            for attr in attribute_list:
+                final_attr_list.append(attr)
+            # Load all room objects and slightly modify content.
+            room_list = []
+            for room in Room.objects.all():
+                parameter_list = []
+                parameter_list.extend([room.name, room.capacity, room.description])
+                room_attr_list = \
+                    room.attributes.all().values_list('attribute', flat=True)
+                final_room_attr_list = []
+                for attr in room_attr_list:
+                    final_room_attr_list.append(attr)
+                parameter_list.append(
+                    final_room_attr_list
+                )
+                room_list.append(parameter_list)
+
+            # Filter terms by date and time.
+            terms = Term.objects.filter(
+                (Q(booking_date__gt=date)) |
+                (Q(booking_date=date) & Q(from_hour__gte=time))
             )
-            room_list.append(parameter_list)
+            # Behave analogously to rooms.
+            term_list = []
+            for term in terms:
+                parameter_list = []
+                parameter_list.append(term.room.name)
+                parameter_list.append(term.booking_date.strftime("%Y-%m-%d"))
+                parameter_list.append(term.from_hour.strftime("%H:%M"))
+                parameter_list.append(term.to.strftime("%H:%M"))
 
-        # Filter terms by date and time.
-        terms = Term.objects.filter(
-            (Q(booking_date__gt=date)) |
-            (Q(booking_date=date) & Q(from_hour__gte=time))
-        )
-        # Behave analogously to rooms.
-        term_list = []
-        for term in terms:
-            parameter_list = []
-            parameter_list.append(term.room.name)
-            parameter_list.append(term.booking_date.strftime("%Y-%m-%d"))
-            parameter_list.append(term.from_hour.strftime("%H:%M"))
-            parameter_list.append(term.to.strftime("%H:%M"))
+                term_list.append(parameter_list)
 
-            term_list.append(parameter_list)
+            # Fulfull dictionary with proper data.
+            dictionary['Attribute'] = final_attr_list
+            dictionary['Room'] = room_list
+            dictionary['Term'] = term_list
 
-        # Fulfull dictionary with proper data.
-        dictionary['Attribute'] = final_attr_list
-        dictionary['Room'] = room_list
-        dictionary['Term'] = term_list
-
-        # Parse data and send it over HttpResponse.
-        response_data = json.dumps(dictionary)
-        return HttpResponse(response_data, mimetype='application/json')
+            # Parse data and send it over HttpResponse.
+            response_data = json.dumps(dictionary)
+            return HttpResponse(response_data, mimetype='application/json')
+    except Exception as e:
+        return HttpResponse(json.dumps(str(e)), mimetype='application/json')
 
 @login_required
 def ajax(request):

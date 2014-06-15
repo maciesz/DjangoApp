@@ -37,7 +37,7 @@
                                 <input type="text" name="query" id="id_query" class="form-control" placeholder="Enter your phrase" style="width: 100%;">
                             </div>
                             <div class="col-md-3">
-                                <input type="submit" value="Search" class="btn btn-info" style="width: 100%;">
+                                <input type="submit" id="search_btn" value="Search" class="btn btn-info" style="width: 100%;">
                             </div>
                         </div>
                         </br>
@@ -61,7 +61,7 @@
                                         <div id="attributes" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 {% for item in attribute_list %}
-                                                <input type="checkbox" name="{{ item }}" value="True"/>   {{ item }}<br />
+                                                <input type="checkbox" class="attribute" name="{{ item }}" value="True"/>   {{ item }}<br />
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -74,53 +74,8 @@
                 <center class="row col-md-6 col-md-offset-1" style="margin-top: 2%;">
                     <input type="button" class="btn btn-warning" id="load_data" name="load_data" value="Reload data" style="width: 100%;">
                 </center>
-				<center class="col-md-6 col-md-offset-1" style="margin-top: 2%;">
-                    {% if rooms %}
-						<table class="table table-hover table-bordered table-striped" style="margin-bottom:4%;">
-							<tr>
-								<th><a href="?sort=name">Name</a></th>
-								<th><a href="?sort=capacity">Capacity</a></th>
-								<th>Description</th>
-								<th>Selected</th>
-                                <th>Go to form</th>
-							</tr>
-							{% for room in rooms %}
-								<tr>
-                                {% with room|first as name %}
-								{% for value in room %}
-									<td>{{ value }}</td>
-								{% endfor %}
-                                    <td>
-                                        <input type="button" class="btn btn-success query_btn" id="{{ name }}" name="{{ name }}" value="Book">
-                                    </td>
-                                {% endwith %}
-								</tr>
-							{% endfor %}
-						</table>
-                        <div class="pagination">
-                            <span class="step-links">
-                                {% if rooms.has_previous %}
-                                    <a href="?page={{ rooms.previous_page_number }}">previous</a>
-                                {% endif %}
-
-                                <span class="current">
-                                    Page {{ rooms.number }} of {{ rooms.paginator.num_pages }}.
-                                </span>
-
-                                {% if rooms.has_next %}
-                                    <a href="?page={{ rooms.next_page_number }}">next</a>
-                                {% endif %}
-                            </span>
-                        </div>
-						<!--<div>
-							<input type="submit" value="Submit" id="submit" class="btn btn-success" style="width: 60%;" id="submit_room">
-                            <button type="button" data-toggle="modal" id="launch" data-target="#my_modal" class="btn btn-warning" style="width: 60%;">Launch modal</button>
-						</div>-->
-                    {% else %}
-                    <span class="glyphicon glyphicon-warning-sign" style="font-size: 1000%;"></span>
-                    <br/>
-                    <label class="lead" style="margin-top: 3%;">Any room fulfills Your criteria!</label>
-                    {% endif %}
+				<center class="col-md-6 col-md-offset-1" id="db_table" style="margin-top: 2%;">
+                    <!-- Tutaj zostanie dodany automatyczny kontent -->
 				</center>
 			</fieldset>
 		</div>
@@ -241,11 +196,12 @@
                         data: {
                             'date': datetime_setter.getDate(),
                             'time': datetime_setter.getCurrentTime(),
-                        }
+                        },
                     })
                     .done(function(data) {
                         // Zaktualizuj stan bazy danych po stronie klienta.
                         jsdb.updateContent(data);
+                        console.log('Oto co nastąpiło: ' + data);
                         // Komunikat o powodzeniu pobrania zawartości bazy.
                         console.log('successfully uploaded db content.');
                         // Sprawdź, czy kontent został właściwie zaktualizowany.
@@ -382,25 +338,31 @@
 
                 // Ustawienia sliderów
                 $(function() {
-                    $("#slider-range").slider({
-                        orientation: "horizontal",
+                    $('#slider-range').slider({
+                        orientation: 'horizontal',
                         range: true,
                         min: 5,
                         max: 60,
                         values: [16, 46],
                         slide: function(event, ui) {
-                            $("#capacity-range").val(ui.values[0] + "-" + ui.values[1]);
+                            $('#capacity-range').val(ui.values[0] + '-' + ui.values[1]);
                         }
                     });
 
-                    $("#capacity-range").val(
-                        $("#slider-range").slider("values", 0) +
-                        "-" +
-                        $("#slider-range").slider("values", 1)
+                    $('#capacity-range').val(
+                        $('#slider-range').slider('values', 0) +
+                        '-' +
+                        $('#slider-range').slider('values', 1)
                     );
                 });
 
-                load_content();
+                // Przycisk ,,Search''.
+                $('#search_btn').click(function(e) {
+                    var str = content_builder.buildTableContent(jsdb);
+                    $('#db_table').html(str);
+                });
+
+                //load_content();
             });
         </script>
 	</body>
