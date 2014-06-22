@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea466fd-7c60-4312-a6a7-cecf7f5dd117" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/JSDB.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/JSDB.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/content_builder.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/content_builder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/src/datetime_setter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/static/js/jquery.ptTimeSelect.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" afterPath="$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="916d98a5-a845-43b7-a9ff-52854fa98b0e" name="Failed commit: Default" comment="Dodanie prostych timepickerów" />
@@ -39,14 +35,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="rooms.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="rooms.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="371" column="0" selection-start="18828" selection-end="18828" vertical-scroll-proportion="-8.907408" vertical-offset="6197" max-vertical-offset="6786">
+            <state line="212" column="26" selection-start="12180" selection-end="12180" vertical-scroll-proportion="0.72835314" vertical-offset="3387" max-vertical-offset="7398">
               <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,7 +65,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="55" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+            <state line="18" column="55" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="468">
               <folding />
             </state>
           </provider>
@@ -88,13 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="415" column="0" selection-start="15513" selection-end="15513" vertical-scroll-proportion="0.35714287" vertical-offset="7250" max-vertical-offset="10872">
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+            <state line="415" column="0" selection-start="15513" selection-end="15513" vertical-scroll-proportion="0.0" vertical-offset="7250" max-vertical-offset="10872">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -269,6 +277,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="browser" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -603,7 +615,11 @@
       <created>1402712382910</created>
       <updated>1402712382910</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Dodanie funkcji dla modułu budowniczego, która umożliwia tworzenie szkieletu htmla tabeli pokoi w oparciu o dane przechowywane w klasach JSowych po stronie klienta. Drobna poprawka w setterze dat/czasu(getDay() + 1).">
+      <created>1402799045026</created>
+      <updated>1402799045026</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -677,7 +693,8 @@
     <MESSAGE value="Fix funkcji load_db_content(inicjacyjne przesłanie danych przez AJAXa)." />
     <MESSAGE value="Dodanie zapisu ściągniętych danych do JSowych kolekcji obiektów(znaczna modyfikacja source'a JSDB) + lekki lifting kodu." />
     <MESSAGE value="Dodanie przycisku 'Reload data' umożliwiającego ściągnięcie aktualnych danych z bazy + fix w filtrowaniu terminów podczas odpowiedzi na opisany request." />
-    <option name="LAST_COMMIT_MESSAGE" value="Dodanie przycisku 'Reload data' umożliwiającego ściągnięcie aktualnych danych z bazy + fix w filtrowaniu terminów podczas odpowiedzi na opisany request." />
+    <MESSAGE value="Dodanie funkcji dla modułu budowniczego, która umożliwia tworzenie szkieletu htmla tabeli pokoi w oparciu o dane przechowywane w klasach JSowych po stronie klienta. Drobna poprawka w setterze dat/czasu(getDay() + 1)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Dodanie funkcji dla modułu budowniczego, która umożliwia tworzenie szkieletu htmla tabeli pokoi w oparciu o dane przechowywane w klasach JSowych po stronie klienta. Drobna poprawka w setterze dat/czasu(getDay() + 1)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -696,9 +713,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="24" selection-start="4557" selection-end="4557" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5400">
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,9 +744,7 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="300" column="70" selection-start="10848" selection-end="10848" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6498">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,9 +769,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="69" selection-start="4945" selection-end="4945" vertical-scroll-proportion="0.0" vertical-offset="1818" max-vertical-offset="2970">
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -750,9 +793,7 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="178" column="0" selection-start="6422" selection-end="6422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6408">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,9 +818,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="14" selection-start="537" selection-end="537" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1854">
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -800,9 +855,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="16" selection-start="1727" selection-end="1727" vertical-scroll-proportion="0.0" vertical-offset="670" max-vertical-offset="1854">
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -820,9 +889,7 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="163" column="70" selection-start="5951" selection-end="5951" vertical-scroll-proportion="0.0" vertical-offset="2749" max-vertical-offset="5904">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -841,9 +908,7 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="142" column="42" selection-start="5203" selection-end="5203" vertical-scroll-proportion="0.0" vertical-offset="1879" max-vertical-offset="4875">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -856,9 +921,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="63" column="32" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1320">
           <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -883,18 +962,14 @@
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="161" column="37" selection-start="5880" selection-end="5880" vertical-scroll-proportion="0.0" vertical-offset="2175" max-vertical-offset="4740">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="222" column="12" selection-start="7242" selection-end="7242" vertical-scroll-proportion="0.0" vertical-offset="3109" max-vertical-offset="4665">
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1006,22 +1081,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="0" selection-start="18828" selection-end="18828" vertical-scroll-proportion="-8.907408" vertical-offset="6197" max-vertical-offset="6786">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="415" column="0" selection-start="15513" selection-end="15513" vertical-scroll-proportion="0.0" vertical-offset="7250" max-vertical-offset="10872">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/views.py">
+    <entry file="file://$PROJECT_DIR$/djangoapp/chair_browser/browser/templates/browser/rooms.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="415" column="0" selection-start="15513" selection-end="15513" vertical-scroll-proportion="0.35714287" vertical-offset="7250" max-vertical-offset="10872">
+        <state line="212" column="26" selection-start="12180" selection-end="12180" vertical-scroll-proportion="0.72835314" vertical-offset="3387" max-vertical-offset="7398">
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#0;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#center#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#1;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#center#0;n#div#2;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

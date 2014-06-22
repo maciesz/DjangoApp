@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
         <!-- Timepicker -->
         <link rel="stylesheet" href="{{ STATIC_URL }}js/jquery.ptTimeSelect.css" />
+        <!-- QUnit Tests -->
+        <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.14.0.css">
 	</head>
 	<body>
 		<div style="font-size: 300%; font-weight: bold;" class="page-header">
@@ -74,8 +76,10 @@
                 <center class="row col-md-6 col-md-offset-1" style="margin-top: 2%;">
                     <input type="button" class="btn btn-warning" id="load_data" name="load_data" value="Reload data" style="width: 100%;">
                 </center>
-				<center class="col-md-6 col-md-offset-1" id="db_table" style="margin-top: 2%;">
-                    <!-- Tutaj zostanie dodany automatyczny kontent -->
+				<center class="col-md-6 col-md-offset-1" style="margin-top: 2%;">
+                    <div id="db_table" style="display: show;">
+                        <!-- Tutaj zostanie dodany automatyczny kontent -->
+                    </div>
 				</center>
 			</fieldset>
 		</div>
@@ -158,8 +162,11 @@
         <script src="{{ STATIC_URL }}js/src/datetime_setter.js" type="text/javascript"></script>
         <script src="{{ STATIC_URL }}js/src/JSDB.js" type="text/javascript"></script>
         <script src="{{ STATIC_URL }}js/src/content_builder.js" type="text/javascript"></script>
+        <script src="{{ STATIC_URL }}js/QUnitTests/jsClassTester.js" type="text/javascript"></script>
+        <script src="//code.jquery.com/qunit/qunit-1.14.0.js"></script>
         <script>
             $(document).ready(function() {
+                var str;
                 // Inicjalizacja bazy danych.
                 var jsdb = new JSDB();
 
@@ -180,9 +187,33 @@
                 var atrybut = new Attribute('bldabjad');
                 console.log(atrybut.name);
                 // Wyłączenie cachowania.
-                $.ajaxSetup({ cache: false });
+                //$.ajaxSetup({ cache: false });
 
                 var datetime_setter = new DateTime();
+
+                // Funkcja testująca jsowe kolekcje obiektów.
+                function test_js_classes() {
+                    console.log('Rozpoczynam testowanie...');
+                    QUnit.test('JavaScriptowe kolekcje obiektów', function(assert) {
+                        // 1) Sprawdź zgodność ustalonych separatorów w odniesieniu
+                        // do Djangowych widoków.
+                        assert.ok(testSeparatorProperties(datetime_setter),
+                        'Poprawnie zainicjalizowane separatory w datetime setterze!');
+                        // 2) Sprawdź poprawność kolekcji pokoi z dokładnością
+                        // do wypełnienia koniecznych pól.
+                        assert.ok(testRoomClass(jsdb.room_collection),
+                        'Pokoje OK!');
+                        // 3) Sprawdź poprawność dat w terminach.
+                        assert.ok(testTermClass(jsdb.term_collection),
+                        'Terminy OK!');
+                        // 4) Sprawdź, czy każdy atrybut ma jakąś niepustą nazwę.
+                        assert.ok(testAttributeClass(jsdb.attribute_collection),
+                        'Atrybuty OK!');
+                        // 5) Jakikolwiek test, który zawsze zwraca false.
+                        //assert.ok(false, 'Niepoprawny test');
+                    });
+                    console.log('Testowanie zakończone.');
+                }
 
                 // Funkcja ściągająca lekko-zmodyfikowany kontent bazy danych.
                 // Dane dotyczące pokoi, terminów i atrybutów są zapisywane w
@@ -206,6 +237,8 @@
                         console.log('successfully uploaded db content.');
                         // Sprawdź, czy kontent został właściwie zaktualizowany.
                         jsdb.debugAfterUpdate();
+                        // Odpal funkcję tetstującą.
+                        test_js_classes();
                     })
                     .fail(function() {
                         // Wypisz komunikat o nieudanym ściągnięciu danych z bazy.
@@ -358,7 +391,8 @@
 
                 // Przycisk ,,Search''.
                 $('#search_btn').click(function(e) {
-                    var str = content_builder.buildTableContent(jsdb);
+                    jsdb.debugAfterUpdate();
+                    str = content_builder.buildTableContent(jsdb);
                     $('#db_table').html(str);
                 });
 
